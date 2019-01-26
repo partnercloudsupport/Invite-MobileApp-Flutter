@@ -30,8 +30,8 @@ android {
 
     signingConfigs {
         debugKey {
-            storeFile file('../debug.keystore')
-            keyAlias 'debugkey'
+            storeFile file('../invitedebug.keystore')
+            keyAlias 'invitedebug'
             keyPassword 'invitedebug'
             storePassword 'invitedebug'
         }
