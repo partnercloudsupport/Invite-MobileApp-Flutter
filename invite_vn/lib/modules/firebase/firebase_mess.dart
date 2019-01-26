@@ -25,7 +25,8 @@ class FirebaseMess {
       print("Settings registered: $settings");
     });
     _messaging.getToken().then((String token) {
-      assert(token != null);
+      print(token);
+//      assert(token != null);
 //      setState(() {
 //        _homeScreenText = "Push Messaging token: $token";
 //      });

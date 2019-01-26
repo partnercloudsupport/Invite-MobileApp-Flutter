@@ -3,6 +3,7 @@ import 'package:invite_vn/di/inject_modules.dart';
 import 'package:invite_vn/di/injector.dart';
 import 'package:invite_vn/modules/auth/facebook_auth.dart';
 import 'package:invite_vn/modules/auth/google_auth.dart';
+import 'package:invite_vn/modules/firebase/firebase_mess.dart';
 
 void main() {
   injectModules();
@@ -36,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   FacebookAuth facebookAuth;
   GoogleAuth googleAuth;
+  FirebaseMess firebaseMess;
 
 
   @override
@@ -43,6 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     facebookAuth = Injector.get();
     googleAuth = Injector.get();
+    firebaseMess = Injector.get();
+    firebaseMess.config();
   }
 
   void _incrementCounter() {
