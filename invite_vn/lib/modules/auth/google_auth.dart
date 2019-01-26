@@ -10,17 +10,15 @@ class GoogleAuth {
 
   void init() {
     _googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount account) {
-//      setState(() {
-//        _currentUser = account;
-//      });
-//      if (_currentUser != null) {
-//        _handleGetContact();
-//      }
+      if (account != null) {
+        print("success");
+        print(account.email);
+      }
     });
     _googleSignIn.signInSilently();
   }
 
-  void login() async {
-    final GoogleSignInAccount account = await _googleSignIn.signIn();
+  void login() {
+    _googleSignIn.signIn();
   }
 }

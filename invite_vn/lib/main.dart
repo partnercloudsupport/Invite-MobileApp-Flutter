@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:invite_vn/di/inject_modules.dart';
 import 'package:invite_vn/di/injector.dart';
 import 'package:invite_vn/modules/auth/facebook_auth.dart';
+import 'package:invite_vn/modules/auth/google_auth.dart';
 
 void main() {
   injectModules();
@@ -34,22 +35,26 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   FacebookAuth facebookAuth;
+  GoogleAuth googleAuth;
 
 
   @override
   void initState() {
     super.initState();
     facebookAuth = Injector.get();
+    googleAuth = Injector.get();
   }
 
   void _incrementCounter() {
-    facebookAuth.login(loggedIn: (data) {
-      print(data);
-    }, cancelledByUser: () {
-      print("cancel");
-    }, error: (error) {
-      print(error);
-    });
+//    facebookAuth.login(loggedIn: (data) {
+//      print(data);
+//    }, cancelledByUser: () {
+//      print("cancel");
+//    }, error: (error) {
+//      print(error);
+//    });
+//    googleAuth.init();
+//    googleAuth.login();
   }
 
   @override
