@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "493755527063",
+    "firebase_url": "https://vietnaminvite-7eaf5.firebaseio.com",
+    "project_id": "vietnaminvite-7eaf5",
+    "storage_bucket": "vietnaminvite-7eaf5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493755527063:android:856a25cf2f329fd3",
+        "android_client_info": {
+          "package_name": "vn.invite.invitevn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493755527063-m637ab1q55csk5kc9rbdju11mkf2lamp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.invite.invitevn",
+            "certificate_hash": "46f8219ee8d050b7ce1357a42afc2c1625971afa"
+          }
+        },
+        {
+          "client_id": "493755527063-okh7dqohpf7hie8k9k246sf29volq0v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApSfxl7qosWQOcIv1bDCFJdYPxuUma3Kk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493755527063-okh7dqohpf7hie8k9k246sf29volq0v6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
