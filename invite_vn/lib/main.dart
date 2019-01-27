@@ -47,6 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
     googleAuth = Injector.get();
     firebaseMess = Injector.get();
     firebaseMess.config();
+    googleAuth.init();
+
   }
 
   void _incrementCounter() {
@@ -57,8 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //    }, error: (error) {
 //      print(error);
 //    });
-//    googleAuth.init();
-//    googleAuth.login();
+    googleAuth.login();
   }
 
   @override
