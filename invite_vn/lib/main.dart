@@ -4,10 +4,31 @@ import 'package:invite_vn/di/injector.dart';
 import 'package:invite_vn/modules/auth/facebook_auth.dart';
 import 'package:invite_vn/modules/auth/google_auth.dart';
 import 'package:invite_vn/modules/firebase/firebase_mess.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:invite_vn/statics/strings.dart';
+
 
 void main() {
   injectModules();
-  runApp(MyApp());
+  runApp(App());
+}
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      localizationsDelegates: [
+        const StringLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', ''),
+        const Locale('vi', ''),
+      ],
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -73,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              S.of(context).title,
             ),
             Text(
               '$_counter',
