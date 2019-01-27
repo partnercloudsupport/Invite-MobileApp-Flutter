@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:invite_vn/di/inject_modules.dart';
-import 'package:invite_vn/di/injector.dart';
-import 'package:invite_vn/modules/auth/facebook_auth.dart';
-import 'package:invite_vn/modules/auth/google_auth.dart';
-import 'package:invite_vn/modules/firebase/firebase_mess.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:invite_vn/di/inject_modules.dart';
+import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
-
 
 void main() {
   injectModules();
@@ -26,7 +22,10 @@ class App extends StatelessWidget {
         const Locale('en', ''),
         const Locale('vi', ''),
       ],
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        Routes.INITIAL: (context) => MyHomePage(title: 'Flutter Demo Home Page'),
+      },
+      initialRoute: Routes.INITIAL,
     );
   }
 }
@@ -36,7 +35,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -56,23 +54,24 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  FacebookAuth facebookAuth;
-  GoogleAuth googleAuth;
-  FirebaseMess firebaseMess;
-
+//  FacebookAuth facebookAuth;
+//  GoogleAuth googleAuth;
+//  FirebaseMess firebaseMess;
 
   @override
   void initState() {
     super.initState();
-    facebookAuth = Injector.get();
-    googleAuth = Injector.get();
-    firebaseMess = Injector.get();
-    firebaseMess.config();
-    googleAuth.init();
-
+//    facebookAuth = Injector.get();
+//    googleAuth = Injector.get();
+//    firebaseMess = Injector.get();
+//    firebaseMess.config();
+//    googleAuth.init();
   }
 
   void _incrementCounter() {
+    setState(() {
+      _counter += 1;
+    });
 //    facebookAuth.login(loggedIn: (data) {
 //      print(data);
 //    }, cancelledByUser: () {
@@ -80,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //    }, error: (error) {
 //      print(error);
 //    });
-    googleAuth.login();
+//    googleAuth.login();
   }
 
   @override
