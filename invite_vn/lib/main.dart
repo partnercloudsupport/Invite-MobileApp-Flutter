@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:invite_vn/di/inject_modules.dart';
+import 'package:invite_vn/features/home/home_screen.dart';
+import 'package:invite_vn/features/login/login_screen.dart';
+import 'package:invite_vn/features/splash/splash_screen.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
 
@@ -23,9 +26,11 @@ class App extends StatelessWidget {
         const Locale('vi', ''),
       ],
       routes: {
-        Routes.INITIAL: (context) => MyHomePage(title: 'Flutter Demo Home Page'),
+        Routes.SPLASH: (context) => SplashScreen(),
+        Routes.LOGIN: (context) => LoginScreen(),
+        Routes.HOME: (context) => HomeScreen(),
       },
-      initialRoute: Routes.INITIAL,
+      initialRoute: Routes.SPLASH,
     );
   }
 }
@@ -54,6 +59,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
 //  FacebookAuth facebookAuth;
 //  GoogleAuth googleAuth;
 //  FirebaseMess firebaseMess;
