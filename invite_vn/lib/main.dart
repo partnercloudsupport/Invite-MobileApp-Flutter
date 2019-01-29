@@ -4,6 +4,9 @@ import 'package:invite_vn/di/inject_modules.dart';
 import 'package:invite_vn/features/home/home_screen.dart';
 import 'package:invite_vn/features/home/social/join_invitation_screen.dart';
 import 'package:invite_vn/features/login/login_screen.dart';
+import 'package:invite_vn/features/profile_setting/facebook_login_confirm_screen.dart';
+import 'package:invite_vn/features/profile_setting/profile_not_login_screen.dart';
+import 'package:invite_vn/features/profile_setting/profile_screen.dart';
 import 'package:invite_vn/features/splash/splash_screen.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
@@ -27,10 +30,16 @@ class App extends StatelessWidget {
         const Locale('vi', ''),
       ],
       routes: {
-        Routes.SPLASH: (context) => SplashScreen(),
+//        Routes.SPLASH: (context) => SplashScreen(),
+        Routes.SPLASH: (context) => ProfileNotLoginScreen(),
         Routes.LOGIN: (context) => LoginScreen(),
         Routes.HOME: (context) => HomeScreen(),
         Routes.JOIN_INVITATION: (context) => JoinInvitationScreen(),
+
+        Routes.PROFILE_SETTING: (context) => ProfileScreen(),
+
+        Routes.PROFILE_NOT_LOGIN: (context) => ProfileNotLoginScreen(),
+        Routes.PROFILE_CONFIRM: (context) => FacebookLoginConfirmScreen(),
       },
       initialRoute: Routes.SPLASH,
     );

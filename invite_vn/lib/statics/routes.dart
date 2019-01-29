@@ -28,4 +28,8 @@ class Routes {
   static const SEND_FEEDBACK = "/send_feedback";
   static const INVITE_USE_APP = "/invite_use_app";
   static const LOGOUT = "/logout";
+
+  //// PROFILE NOT LOGIN
+  static const PROFILE_NOT_LOGIN = "/profile_not_login";
+  static const PROFILE_CONFIRM = "/profile_confirm";
 }
