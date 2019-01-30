@@ -21,8 +21,16 @@ class TopBar extends StatelessWidget {
     Widget right;
     Widget middle;
     final children = <Widget>[];
+    bool hasShadow = false;
+    Color headerColor = Colors.transparent;
+    bool hasBack = true;
 
     switch (routes) {
+      case Routes.PROFILE:
+        Color color = AppColors.WHITE;
+        left = buildIcon(Assets.back, color);
+        break;
+
       case Routes.EDIT_PROFILE:
         Color color = AppColors.TORTOISE;
         left = buildIcon(Assets.back, color);
@@ -30,12 +38,16 @@ class TopBar extends StatelessWidget {
         break;
 
       case Routes.INVITE_USE_APP:
+        hasShadow = true;
+        headerColor = AppColors.WHITE;
         Color color = AppColors.TORTOISE;
         left = buildIcon(Assets.back, color);
         middle = buildText(title: "Mời bạn bè dùng Invite");
         break;
 
-      case Routes.SEND_FEEDBACK:
+      case Routes.FEEDBACK:
+        hasShadow = true;
+        headerColor = AppColors.WHITE;
         Color color = AppColors.TORTOISE;
         left = buildIcon(Assets.back, color);
         middle = buildText(title: "Gửi phản hồi");
@@ -45,7 +57,7 @@ class TopBar extends StatelessWidget {
     if (middle != null) {
       children.add(
         Center(
-          child: Positioned(child: middle),
+          child: middle,
         ),
       );
     }
@@ -54,7 +66,10 @@ class TopBar extends StatelessWidget {
       children.add(
         Align(
           alignment: Alignment.centerLeft,
-          child: buildTap(left, onLeftTap),
+          child: buildTap(
+            left,
+            hasBack ? () => Navigator.of(context).pop() : onLeftTap,
+          ),
         ),
       );
     }
@@ -68,17 +83,22 @@ class TopBar extends StatelessWidget {
       );
     }
 
-    return Padding(
-      padding: EdgeInsets.only(
-        left: 20.0, right: 20.0, top: 24.0,
-      ),
-      child: Column(
-        children: <Widget>[
-          Stack(
+    return Material(
+      elevation: hasShadow ? 5.0 : 0.0,
+      shadowColor: Colors.black38,
+      color: headerColor,
+      child: Container(
+        height: 56.0,
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: 20.0,
+            right: 20.0,
+          ),
+          child: Stack(
             children: children,
             fit: StackFit.loose,
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

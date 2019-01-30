@@ -23,9 +23,9 @@ class Routes {
   static const EDIT_INVITATION = "/edit_invitation";
 
   //// PROFILE SETTING
-  static const PROFILE_SETTING = "/profile_setting";
+  static const PROFILE = "/profile_setting";
   static const EDIT_PROFILE = "/edit_profile";
-  static const SEND_FEEDBACK = "/send_feedback";
+  static const FEEDBACK = "/feedback";
   static const INVITE_USE_APP = "/invite_use_app";
   static const LOGOUT = "/logout";
 

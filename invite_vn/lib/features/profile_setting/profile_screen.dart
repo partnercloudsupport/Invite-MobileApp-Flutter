@@ -3,6 +3,7 @@ import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/statics/assets.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/widgets/background/TopGradientBackground.dart';
+import 'package:invite_vn/widgets/bar/TopBar.dart';
 import 'package:invite_vn/widgets/buttons/app_button.dart';
 import 'package:invite_vn/widgets/card/AppCard.dart';
 import 'package:invite_vn/widgets/dialogs/app_dialog.dart';
@@ -20,12 +21,21 @@ class _StateProfileScreen extends State<ProfileScreen> {
   double infoCardSize = 160.0;
   double borderSize = 5.0;
 
+  void clickEditProfile() => Navigator.of(context).pushNamed(Routes.EDIT_PROFILE);
+  void clickFeedback() => Navigator.of(context).pushNamed(Routes.FEEDBACK);
+  void clickInviteUseApp() => Navigator.of(context).pushNamed(Routes.INVITE_USE_APP);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: <Widget>[
           TopGradientBackground(),
+          SafeArea(
+            child: TopBar(
+              routes: Routes.PROFILE,
+            ),
+          ),
           buildContent(),
         ],
       ),
@@ -136,17 +146,19 @@ class _StateProfileScreen extends State<ProfileScreen> {
           AppButton(
             type: AppButton.RightArrow,
             title: "Thông tin cá nhân",
-            onTap: () => Navigator.of(context).pushNamed(Routes.EDIT_PROFILE),
+            onTap: clickEditProfile,
           ),
           buildDivider(),
           AppButton(
             type: AppButton.RightArrow,
             title: "Gửi phản hồi",
+            onTap: clickFeedback,
           ),
           buildDivider(),
           AppButton(
             type: AppButton.RightArrow,
             title: "Mời bạn bè dùng Invite",
+            onTap: clickInviteUseApp,
           ),
         ],
       ),

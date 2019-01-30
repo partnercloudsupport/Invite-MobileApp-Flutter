@@ -6,6 +6,8 @@ import 'package:invite_vn/features/home/home_screen.dart';
 import 'package:invite_vn/features/home/social/join_invitation_screen.dart';
 import 'package:invite_vn/features/login/login_screen.dart';
 import 'package:invite_vn/features/profile_setting/edit_profile_screen.dart';
+import 'package:invite_vn/features/profile_setting/feedback_screen.dart';
+import 'package:invite_vn/features/profile_setting/invite_use_app_screen.dart';
 import 'package:invite_vn/features/profile_setting/profile_not_login_screen.dart';
 import 'package:invite_vn/features/profile_setting/profile_screen.dart';
 import 'package:invite_vn/statics/routes.dart';
@@ -39,8 +41,9 @@ class App extends StatelessWidget {
         Routes.HOME: (context) => HomeScreen(),
         Routes.JOIN_INVITATION: (context) => JoinInvitationScreen(),
 
-        Routes.PROFILE_SETTING: (context) => ProfileScreen(),
-
+        Routes.PROFILE: (context) => ProfileScreen(),
+        Routes.FEEDBACK: (context) => FeedbackScreen(),
+        Routes.INVITE_USE_APP: (context) => InviteUseAppScreen(),
         Routes.PROFILE_NOT_LOGIN: (context) => ProfileNotLoginScreen(),
         Routes.EDIT_PROFILE: (context) => EditProfileScreen(),
       },

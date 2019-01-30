@@ -3,14 +3,14 @@ import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/widgets/bar/TopBar.dart';
 
-class FeedbackScreen extends StatefulWidget {
-  FeedbackScreen({Key key}) : super(key: key);
+class InviteUseAppScreen extends StatefulWidget {
+  InviteUseAppScreen({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _StateFeedbackScreen();
+  State<StatefulWidget> createState() => _StateInviteUseAppScreen();
 }
 
-class _StateFeedbackScreen extends State<FeedbackScreen> {
+class _StateInviteUseAppScreen extends State<InviteUseAppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +20,8 @@ class _StateFeedbackScreen extends State<FeedbackScreen> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             TopBar(
-              routes: Routes.FEEDBACK,
-            )
+              routes: Routes.INVITE_USE_APP,
+            ),
           ],
         ),
       ),

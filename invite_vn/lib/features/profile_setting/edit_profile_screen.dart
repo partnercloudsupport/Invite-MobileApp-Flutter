@@ -32,14 +32,13 @@ class _StateEditProfileScreen extends State<EditProfileScreen> {
             ),
             TopBar(
               routes: Routes.EDIT_PROFILE,
-              onLeftTap: () => Navigator.of(context).pop(),
               onRightTap: () {
                 AppDialog.show(
                   context: context,
                   child: LoginSuccessDialog(
                     onTap: () {
                       if (AppDialog.close(context)) {
-                        Navigator.of(context).pushNamed(Routes.PROFILE_SETTING);
+                        Navigator.of(context).pushNamed(Routes.PROFILE);
                       }
                     },
                   ),
@@ -61,10 +60,13 @@ class _StateEditProfileScreen extends State<EditProfileScreen> {
             backgroundImage: AssetImage(Assets.logo),
           ),
         ),
-        buildForm(title: "Họ", controller: firstNameController),
-        buildForm(title: "Tên", controller: lastNameController),
+        buildForm(
+            title: "Họ", hintText: "Nhập họ", controller: firstNameController),
+        buildForm(
+            title: "Tên", hintText: "Nhập tên", controller: lastNameController),
         buildForm(
             title: "Ngày sinh",
+            hintText: "Chọn ngày sinh",
             isBirthday: true,
             onTap: () {
               showDatePicker(
@@ -81,6 +83,7 @@ class _StateEditProfileScreen extends State<EditProfileScreen> {
 
   Widget buildForm(
       {String title,
+      String hintText,
       TextEditingController controller,
       GestureTapCallback onTap,
       bool isBirthday = false,
@@ -103,6 +106,7 @@ class _StateEditProfileScreen extends State<EditProfileScreen> {
         enabled: !isBirthday,
         onTap: onTap,
         controller: controller,
+        hintText: hintText,
       );
     }
 
