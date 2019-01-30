@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:invite_vn/di/inject_modules.dart';
 import 'package:invite_vn/features/home/home_screen.dart';
 import 'package:invite_vn/features/home/social/join_invitation_screen.dart';
 import 'package:invite_vn/features/login/login_screen.dart';
-import 'package:invite_vn/features/profile_setting/facebook_login_confirm_screen.dart';
+import 'package:invite_vn/features/profile_setting/edit_profile_screen.dart';
 import 'package:invite_vn/features/profile_setting/profile_not_login_screen.dart';
 import 'package:invite_vn/features/profile_setting/profile_screen.dart';
-import 'package:invite_vn/features/splash/splash_screen.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
 
 void main() {
   injectModules();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
+    statusBarColor: Colors.transparent, //or set color with: Color(0xFF0000FF)
+  ));
   runApp(App());
 }
 
@@ -39,7 +42,7 @@ class App extends StatelessWidget {
         Routes.PROFILE_SETTING: (context) => ProfileScreen(),
 
         Routes.PROFILE_NOT_LOGIN: (context) => ProfileNotLoginScreen(),
-        Routes.PROFILE_CONFIRM: (context) => FacebookLoginConfirmScreen(),
+        Routes.EDIT_PROFILE: (context) => EditProfileScreen(),
       },
       initialRoute: Routes.SPLASH,
     );

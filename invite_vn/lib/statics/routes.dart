@@ -31,5 +31,5 @@ class Routes {
 
   //// PROFILE NOT LOGIN
   static const PROFILE_NOT_LOGIN = "/profile_not_login";
-  static const PROFILE_CONFIRM = "/profile_confirm";
+//  static const PROFILE_CONFIRM = "/profile_confirm";
 }

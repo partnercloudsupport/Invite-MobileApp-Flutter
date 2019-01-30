@@ -3,7 +3,7 @@ import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/widgets/buttons/base_button.dart';
 
 class RedWhiteButton extends BaseButton {
-  RedWhiteButton({ValueGetter<void> onTap, String title})
+  RedWhiteButton({GestureTapCallback onTap, String title})
       : super(
           onTap: onTap,
           color: AppColors.WHITE,

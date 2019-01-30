@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BaseButton extends StatelessWidget {
   final shape;
   final Color color;
-  final ValueGetter<void> onTap;
+  final GestureTapCallback onTap;
   final Size size;
   final Widget child;
 

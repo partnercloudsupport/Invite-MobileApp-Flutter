@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/statics/assets.dart';
+import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/widgets/background/TopGradientBackground.dart';
 import 'package:invite_vn/widgets/buttons/app_button.dart';
 import 'package:invite_vn/widgets/card/AppCard.dart';
+import 'package:invite_vn/widgets/dialogs/app_dialog.dart';
+import 'package:invite_vn/widgets/dialogs/logout_dialog.dart';
 
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({Key key}) : super(key: key);
@@ -33,8 +36,8 @@ class _StateProfileScreen extends State<ProfileScreen> {
     return Padding(
       padding: EdgeInsets.only(
           top: MediaQuery.of(context).size.height * 0.3 - (160 + 120) / 2,
-          left: 30.0,
-          right: 30.0),
+          left: 20.0,
+          right: 20.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -45,13 +48,25 @@ class _StateProfileScreen extends State<ProfileScreen> {
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(top: 25.0, bottom: 25.0),
+            padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
             child: buildNavigationInfoCard(),
           ),
           AppButton(
             type: AppButton.RedWhite,
             title: "Đăng xuất",
-            onTap: () {},
+            onTap: () {
+              AppDialog.show(
+                context: context,
+                child: LogoutDialog(
+                  onPositiveTap: () {
+                    AppDialog.close(context);
+                  },
+                  onNegativeTap: () {
+                    AppDialog.close(context);
+                  },
+                ),
+              );
+            },
           )
         ],
       ),
@@ -121,6 +136,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
           AppButton(
             type: AppButton.RightArrow,
             title: "Thông tin cá nhân",
+            onTap: () => Navigator.of(context).pushNamed(Routes.EDIT_PROFILE),
           ),
           buildDivider(),
           AppButton(
@@ -138,9 +154,15 @@ class _StateProfileScreen extends State<ProfileScreen> {
   }
 
   Widget buildDivider() {
-    return Divider(
-      color: AppColors.SCREEN,
-      height: 1.0,
+    return Padding(
+      padding: EdgeInsets.only(
+        left: 16.0,
+        right: 16.0,
+      ),
+      child: Divider(
+        color: AppColors.SCREEN,
+        height: 1.0,
+      ),
     );
   }
 }

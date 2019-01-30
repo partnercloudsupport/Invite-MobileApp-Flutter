@@ -25,7 +25,7 @@ class AppButton extends StatelessWidget {
       case Facebook:
         return FacebookButton(
           onTap: onTap,
-          title: "Đăng nhập bằng Facebook",
+          title: "Đăng nhập bằng Facebook".toUpperCase(),
         );
 
       case RightArrow:

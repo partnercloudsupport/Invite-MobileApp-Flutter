@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:invite_vn/widgets/buttons/base_button.dart';
 
 class RightArrowButton extends BaseButton {
-  RightArrowButton({Key key, ValueGetter<void> onTap, String title})
+  RightArrowButton({Key key, GestureTapCallback onTap, String title})
       : super(
           onTap: onTap,
           color: Colors.transparent,
-          size: Size(double.maxFinite, 60.0),
+          size: Size(double.maxFinite, 62.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[

@@ -9,7 +9,11 @@ class Assets {
 
   //// Logos
   static String get logo => "${_logos}logo.png";
+  static String get successLogo => "${_logos}success_logo.png";
 
   //// Icons
   static String get female => "${_icons}female.png";
+  static String get back => "${_icons}back.png";
+  static String get radioChecked => "${_icons}radio_checked.png";
+  static String get radioUncheck => "${_icons}radio_uncheck.png";
 }
