@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:invite_vn/di/inject_modules.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
+import 'package:invite_vn/widgets/item_communicate.dart';
 
 void main() {
   injectModules();
@@ -23,7 +24,8 @@ class App extends StatelessWidget {
         const Locale('vi', ''),
       ],
       routes: {
-        Routes.INITIAL: (context) => MyHomePage(title: 'Flutter Demo Home Page'),
+        Routes.INITIAL: (context) =>
+            MyHomePage(title: 'Flutter Demo Home Page'),
       },
       initialRoute: Routes.INITIAL,
     );
@@ -54,6 +56,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
 //  FacebookAuth facebookAuth;
 //  GoogleAuth googleAuth;
 //  FirebaseMess firebaseMess;
@@ -84,29 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              S.of(context).title,
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    return ItemCommunicate().build(context);
   }
 }
