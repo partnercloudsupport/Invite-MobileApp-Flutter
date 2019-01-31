@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/statics/assets.dart';
 import 'package:invite_vn/statics/routes.dart';
+import 'package:invite_vn/widgets/bar/TopBar.dart';
 import 'package:invite_vn/widgets/buttons/app_button.dart';
 
 class ProfileNotLoginScreen extends StatefulWidget {
@@ -42,6 +43,12 @@ class _StateProfileNotLoginScreen extends State<ProfileNotLoginScreen> {
 
         ////// CONTENT //////
         buildContent(),
+
+        SafeArea(
+          child: TopBar(
+            routes: Routes.PROFILE_NOT_LOGIN,
+          ),
+        )
       ],
     );
   }

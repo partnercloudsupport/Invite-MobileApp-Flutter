@@ -16,4 +16,5 @@ class Assets {
   static String get back => "${_icons}back.png";
   static String get radioChecked => "${_icons}radio_checked.png";
   static String get radioUncheck => "${_icons}radio_uncheck.png";
+  static String get pencil => "${_icons}pencil.png";
 }

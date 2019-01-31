@@ -73,6 +73,7 @@ flutter:
     - assets/backgrounds/profile_not_login_bg.png
 
     # ICONS
+    - assets/icons/pencil.png
     - assets/icons/radio_checked.png
     - assets/icons/radio_uncheck.png
     - assets/icons/female.png

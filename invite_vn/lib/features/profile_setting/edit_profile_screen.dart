@@ -6,6 +6,7 @@ import 'package:invite_vn/widgets/bar/TopBar.dart';
 import 'package:invite_vn/widgets/dialogs/app_dialog.dart';
 import 'package:invite_vn/widgets/dialogs/login_success_dialog.dart';
 import 'package:invite_vn/widgets/radio_group.dart';
+import 'package:invite_vn/widgets/scrollable_content.dart';
 import 'package:invite_vn/widgets/textfields/GrayTextField.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -15,7 +16,8 @@ class EditProfileScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _StateEditProfileScreen();
 }
 
-class _StateEditProfileScreen extends State<EditProfileScreen> {
+class _StateEditProfileScreen extends State<EditProfileScreen>
+    with ScrollableContentHelper {
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
 
@@ -24,28 +26,37 @@ class _StateEditProfileScreen extends State<EditProfileScreen> {
     return Scaffold(
       backgroundColor: AppColors.WHITE,
       body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            SingleChildScrollView(
-              padding: EdgeInsets.only(left: 20.0, right: 20.0),
-              child: buildContent(),
-            ),
-            TopBar(
-              routes: Routes.EDIT_PROFILE,
-              onRightTap: () {
-                AppDialog.show(
-                  context: context,
-                  child: LoginSuccessDialog(
-                    onTap: () {
-                      if (AppDialog.close(context)) {
-                        Navigator.of(context).pushNamed(Routes.PROFILE);
-                      }
-                    },
-                  ),
-                );
-              },
-            ),
-          ],
+        child: Container(
+          height: double.maxFinite,
+          key: bodyKey,
+          child: Stack(
+            children: <Widget>[
+              SingleChildScrollView(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                child: ScrollableContent(
+                  factor: 0.35,
+                  bodyKey: bodyKey,
+                  contentKey: contentKey,
+                  child: buildContent(),
+                ),
+              ),
+              TopBar(
+                routes: Routes.EDIT_PROFILE,
+                onRightTap: () {
+                  AppDialog.show(
+                    context: context,
+                    child: LoginSuccessDialog(
+                      onTap: () {
+                        if (AppDialog.close(context)) {
+                          Navigator.of(context).pushNamed(Routes.PROFILE);
+                        }
+                      },
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -53,13 +64,26 @@ class _StateEditProfileScreen extends State<EditProfileScreen> {
 
   Widget buildContent() {
     return Column(
+      key: contentKey,
       children: <Widget>[
         SizedBox.fromSize(
-          size: Size(80.0, 80.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage(Assets.logo),
-          ),
-        ),
+            size: Size(120.0, 120.0),
+            child: Stack(
+              children: <Widget>[
+                SizedBox.expand(
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage(Assets.logo),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: SizedBox.fromSize(
+                    size: Size(32.0, 32.0),
+                    child: Image.asset(Assets.pencil),
+                  ),
+                ),
+              ],
+            )),
         buildForm(
             title: "Họ", hintText: "Nhập họ", controller: firstNameController),
         buildForm(

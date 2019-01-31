@@ -26,6 +26,17 @@ class TopBar extends StatelessWidget {
     bool hasBack = true;
 
     switch (routes) {
+      case Routes.PROFILE_NOT_LOGIN:
+        Color color = AppColors.TORTOISE;
+        left = SizedBox.fromSize(
+          size: Size(40.0, 40.0),
+          child: CircleAvatar(
+            child: buildIcon(Assets.back, color),
+            backgroundColor: AppColors.WHITE,
+          ),
+        );
+        break;
+
       case Routes.PROFILE:
         Color color = AppColors.WHITE;
         left = buildIcon(Assets.back, color);
