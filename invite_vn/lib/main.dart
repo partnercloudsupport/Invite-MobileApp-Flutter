@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:invite_vn/di/inject_modules.dart';
+import 'package:invite_vn/features/invitation_detail.dart';
 import 'package:invite_vn/features/home/home_screen.dart';
 import 'package:invite_vn/features/home/social/join_invitation_screen.dart';
 import 'package:invite_vn/features/login/login_screen.dart';
@@ -36,7 +37,7 @@ class App extends StatelessWidget {
       ],
       routes: {
 //        Routes.SPLASH: (context) => SplashScreen(),
-        Routes.SPLASH: (context) => ProfileNotLoginScreen(),
+        Routes.SPLASH: (context) => InvitationDetail(),
         Routes.LOGIN: (context) => LoginScreen(),
         Routes.HOME: (context) => HomeScreen(),
         Routes.JOIN_INVITATION: (context) => JoinInvitationScreen(),
@@ -46,6 +47,8 @@ class App extends StatelessWidget {
         Routes.INVITE_USE_APP: (context) => InviteUseAppScreen(),
         Routes.PROFILE_NOT_LOGIN: (context) => ProfileNotLoginScreen(),
         Routes.EDIT_PROFILE: (context) => EditProfileScreen(),
+
+        Routes.INVITATION_DETAIL: (context) => InvitationDetail(),
       },
       initialRoute: Routes.SPLASH,
     );

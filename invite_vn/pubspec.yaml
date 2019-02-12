@@ -42,7 +42,7 @@ dependencies:
   cached_network_image: 0.5.1
 
   #Map
-  google_maps_flutter: 0.2.0
+  google_maps_flutter: 0.2.0+2
 
   firebase_messaging: 2.2.0
 #  flutter_crashlytics: 0.2.0
