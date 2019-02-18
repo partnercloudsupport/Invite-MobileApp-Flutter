@@ -18,7 +18,6 @@ class _StateSocialScreen extends State<SocialScreen> {
         ///NOTE: Must add PageStorageKey
         key: PageStorageKey(Routes.SOCIAL),
         children: <Widget>[
-          Text("SocialScreen"),
           Flexible(
             child: ListView.builder(
               shrinkWrap: true,

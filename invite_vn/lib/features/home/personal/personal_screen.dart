@@ -9,28 +9,40 @@ class PersonalScreen extends StatefulWidget {
 }
 
 class _StatePersonalScreen extends State<PersonalScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        ///NOTE: Must add PageStorageKey
+      body: Stack(
         key: PageStorageKey(Routes.PERSONAL),
         children: <Widget>[
-          Text("PersonalScreen"),
-          Flexible(
-            child: ListView.builder(
-              shrinkWrap: true,
-              padding: EdgeInsets.all(8.0),
-              itemCount: 100,
-              itemBuilder: (BuildContext context, int index) {
-                return Text('entry $index');
-              },
+          Positioned(
+            bottom: 0,
+            child: Container(
+              height: 48.0,
+              width: 133.0,
+              child: Center(
+                child: Text(
+                  'Tạo mới',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    // Add one stop for each color. Stops should increase from 0 to 1
+                    colors: [
+                      // Colors are easy thanks to Flutter's Colors class.
+                      Colors.green,
+                      Colors.greenAccent,
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(24.0)),
             ),
-          ),
-          RaisedButton(
-            onPressed: () => Navigator.of(context).pushNamed(""),
-            child: Text("Next Screen"),
           )
         ],
       ),

@@ -47,7 +47,7 @@ class App extends StatelessWidget {
         Routes.PROFILE_NOT_LOGIN: (context) => ProfileNotLoginScreen(),
         Routes.EDIT_PROFILE: (context) => EditProfileScreen(),
       },
-      initialRoute: Routes.SPLASH,
+      initialRoute: Routes.HOME,
     );
   }
 }

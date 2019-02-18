@@ -71,6 +71,7 @@ flutter:
   assets:
     # BACKGROUNDS
     - assets/backgrounds/profile_not_login_bg.png
+    - assets/backgrounds/header_home.png
 
     # ICONS
     - assets/icons/pencil.png
@@ -82,7 +83,6 @@ flutter:
     # LOGOS
     - assets/logos/logo.png
     - assets/logos/success_logo.png
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
