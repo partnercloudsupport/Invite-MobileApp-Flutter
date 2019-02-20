@@ -79,6 +79,7 @@ flutter:
     - assets/icons/radio_uncheck.png
     - assets/icons/female.png
     - assets/icons/back.png
+    - assets/icons/ic_add.png
 
     # LOGOS
     - assets/logos/logo.png
