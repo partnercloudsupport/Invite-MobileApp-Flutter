@@ -32,9 +32,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
         children: <Widget>[
           TopGradientBackground(),
           SafeArea(
-            child: TopBar(
-              routes: Routes.PROFILE,
-            ),
+            child: TopBar(),
           ),
           buildContent(),
         ],

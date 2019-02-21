@@ -41,7 +41,6 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
                 ),
               ),
               TopBar(
-                routes: Routes.EDIT_PROFILE,
                 onRightTap: () {
                   AppDialog.show(
                     context: context,

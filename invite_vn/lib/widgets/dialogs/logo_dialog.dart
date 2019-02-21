@@ -14,20 +14,24 @@ class LogoDialog extends StatelessWidget {
     String title;
     String message;
     String titleBtn;
+    String logo;
 
     switch (ModalRoute.of(context).settings.name) {
       case Routes.SPLASH:
         title = "TUYỆT VỜI";
         message = "Giờ bạn đã có thể tạo và tiếp tục tham gia các hoạt động cùng Invite";
         titleBtn = "OK";
+        logo = Assets.acceptLogo;
         break;
 
       case Routes.EDIT_PROFILE:
         title = "CHÚC MỪNG";
         message = "Yêu cầu của bạn đã được chấp nhận. Trò chuyện để giao lưu với những thành viên còn lại nhé";
         titleBtn = "TRÒ CHUYỆN";
+        logo = Assets.successLogo;
         break;
     }
+
 
 
     return Column(
@@ -35,7 +39,7 @@ class LogoDialog extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: EdgeInsets.only(top: 24.0, bottom: 32.0),
-          child: Image.asset(Assets.successLogo),
+          child: Image.asset(logo),
         ),
         Text(
           title.toUpperCase(),

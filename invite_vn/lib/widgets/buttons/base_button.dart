@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BaseButton extends StatelessWidget {
-  final shape;
+  final ShapeBorder shape;
   final Color color;
   final GestureTapCallback onTap;
   final Size size;
@@ -31,7 +31,10 @@ class BaseButton extends StatelessWidget {
             ),
         splashColor: Colors.black12,
         child: ConstrainedBox(
-          constraints: BoxConstraints.tight(size),
+          constraints: BoxConstraints(
+            minWidth: size.width,
+            minHeight: size.height,
+          ),
           child: Padding(
             padding: EdgeInsets.only(left: 20.0, right: 20.0),
             child: child,

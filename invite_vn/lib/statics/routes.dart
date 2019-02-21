@@ -35,4 +35,5 @@ class Routes {
 
   //// INVITATION
   static const INVITATION_DETAIL = "/invitation_detail";
+  static const CHAT = "/chat";
 }
