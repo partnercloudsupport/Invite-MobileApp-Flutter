@@ -24,7 +24,7 @@ class _StateSocialScreen extends State<SocialScreen> {
               padding: EdgeInsets.all(8.0),
               itemCount: 100,
               itemBuilder: (BuildContext context, int index) {
-                return ItemCommunicate(ActivityModel()).build(context); // getItem
+                return ItemCommunicate().build(context); // getItem
               },
               itemExtent: 200,
             ),

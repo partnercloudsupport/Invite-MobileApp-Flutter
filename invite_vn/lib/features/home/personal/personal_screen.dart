@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invite_vn/statics/routes.dart';
+import 'package:invite_vn/widgets/item_communicate.dart';
 
 class PersonalScreen extends StatefulWidget {
   PersonalScreen({Key key}) : super(key: key);
@@ -9,8 +10,7 @@ class PersonalScreen extends StatefulWidget {
 }
 
 class _StatePersonalScreen extends State<PersonalScreen> {
-
-  Widget bottomButton(){
+  Widget bottomButton() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
@@ -54,15 +54,15 @@ class _StatePersonalScreen extends State<PersonalScreen> {
     );
   }
 
-  BoxShadow getShadow(){
+  BoxShadow getShadow() {
     return BoxShadow(
-        color: Colors.black45,
-        blurRadius: 40.0,
-        offset: Offset(0.0, 5.0)
+      color: Colors.black45,
+      blurRadius: 40.0,
+      offset: Offset(0.0, 5.0),
     );
   }
 
-  Gradient getGradient(){
+  Gradient getGradient() {
     return LinearGradient(
       begin: Alignment.topRight,
       end: Alignment.bottomLeft,
@@ -81,6 +81,15 @@ class _StatePersonalScreen extends State<PersonalScreen> {
       body: Stack(
         key: PageStorageKey(Routes.PERSONAL),
         children: <Widget>[
+          ListView.builder(
+            shrinkWrap: true,
+            padding: EdgeInsets.all(8.0),
+            itemCount: 100,
+            itemBuilder: (BuildContext context, int index) {
+              return ItemCommunicate().build(context); // getItem
+            },
+            itemExtent: 200,
+          ),
           bottomButton(),
         ],
       ),

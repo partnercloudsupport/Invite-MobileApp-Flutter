@@ -149,5 +149,5 @@ class ItemCommunicate extends Scaffold {
 
   ActivityModel activityModel;
 
-  ItemCommunicate(this.activityModel);
+  ItemCommunicate({this.activityModel});
 }
