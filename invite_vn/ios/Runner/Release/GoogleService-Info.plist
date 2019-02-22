@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>493755527063-ekha606barteckgasmln4dl443lm5602.apps.googleusercontent.com</string>
+	<string>1072954467863-8oq4eqj33ng4m84p6a58fku45pvcacb7.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.493755527063-ekha606barteckgasmln4dl443lm5602</string>
+	<string>com.googleusercontent.apps.1072954467863-8oq4eqj33ng4m84p6a58fku45pvcacb7</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAnI5huPpQVU0WnqJu5K6Yliat_svO1mzI</string>
+	<string>AIzaSyCfaKUx4_kMMC1Xxn3w2a1fd6SSzgMOigQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>493755527063</string>
+	<string>1072954467863</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>vn.invite.invitevn</string>
+	<string>com.teviin.teviinapp</string>
 	<key>PROJECT_ID</key>
-	<string>vietnaminvite-7eaf5</string>
+	<string>teviinapp-8be91</string>
 	<key>STORAGE_BUCKET</key>
-	<string>vietnaminvite-7eaf5.appspot.com</string>
+	<string>teviinapp-8be91.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:493755527063:ios:856a25cf2f329fd3</string>
+	<string>1:1072954467863:ios:afcfe7825ab755ab</string>
 	<key>DATABASE_URL</key>
-	<string>https://vietnaminvite-7eaf5.firebaseio.com</string>
+	<string>https://teviinapp-8be91.firebaseio.com</string>
 </dict>
 </plist>

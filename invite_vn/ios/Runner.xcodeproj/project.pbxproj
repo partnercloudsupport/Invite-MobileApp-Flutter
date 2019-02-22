@@ -14,11 +14,9 @@
 		3B80C3941E831B6300D905FE /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
 		3B80C3951E831B6300D905FE /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
-		8E4C575221FDB2F600C26DEA /* Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E4C575121FDB2F600C26DEA /* Debug.plist */; };
-		8E4C575421FDB3AD00C26DEA /* Release.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E4C575321FDB3AD00C26DEA /* Release.plist */; };
-		8E4C575E21FDBA0700C26DEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E4C575B21FDBA0700C26DEA /* GoogleService-Info.plist */; };
-		8E4C575F21FDBA0700C26DEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E4C575D21FDBA0700C26DEA /* GoogleService-Info.plist */; };
 		8EE0006B21FCE92B00D8B859 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8EE688CB22200FB90047E438 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EE688CA22200FB90047E438 /* GoogleService-Info.plist */; };
+		8EE688CD222010D30047E438 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EE688CC222010D30047E438 /* GoogleService-Info.plist */; };
 		9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
@@ -55,8 +53,9 @@
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		8E4C575121FDB2F600C26DEA /* Debug.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Debug.plist; sourceTree = "<group>"; };
 		8E4C575321FDB3AD00C26DEA /* Release.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Release.plist; sourceTree = "<group>"; };
-		8E4C575B21FDBA0700C26DEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8E4C575D21FDBA0700C26DEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8EE688C8221FF8EB0047E438 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
+		8EE688CA22200FB90047E438 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8EE688CC222010D30047E438 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		9740EEBA1CF902C7004384FC /* Flutter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Flutter.framework; path = Flutter/Flutter.framework; sourceTree = "<group>"; };
@@ -92,7 +91,7 @@
 		8E4C575A21FDBA0700C26DEA /* Debug */ = {
 			isa = PBXGroup;
 			children = (
-				8E4C575B21FDBA0700C26DEA /* GoogleService-Info.plist */,
+				8EE688CA22200FB90047E438 /* GoogleService-Info.plist */,
 			);
 			path = Debug;
 			sourceTree = "<group>";
@@ -100,7 +99,7 @@
 		8E4C575C21FDBA0700C26DEA /* Release */ = {
 			isa = PBXGroup;
 			children = (
-				8E4C575D21FDBA0700C26DEA /* GoogleService-Info.plist */,
+				8EE688CC222010D30047E438 /* GoogleService-Info.plist */,
 			);
 			path = Release;
 			sourceTree = "<group>";
@@ -151,6 +150,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				8EE688C8221FF8EB0047E438 /* Runner.entitlements */,
 				8E4C575A21FDBA0700C26DEA /* Debug */,
 				8E4C575C21FDBA0700C26DEA /* Release */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
@@ -213,8 +213,13 @@
 				TargetAttributes = {
 					97C146ED1CF9000F007C117D = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 9CUULMH93V;
+						DevelopmentTeam = A323542N3T;
 						LastSwiftMigration = 0910;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -241,15 +246,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E4C575421FDB3AD00C26DEA /* Release.plist in Resources */,
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
-				8E4C575E21FDBA0700C26DEA /* GoogleService-Info.plist in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				2D5378261FAA1A9400D5DBA9 /* flutter_assets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
-				8E4C575F21FDBA0700C26DEA /* GoogleService-Info.plist in Resources */,
-				8E4C575221FDB2F600C26DEA /* Debug.plist in Resources */,
+				8EE688CB22200FB90047E438 /* GoogleService-Info.plist in Resources */,
+				8EE688CD222010D30047E438 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +373,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 		E614D54C5C186ED2F7CB69AF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -487,7 +490,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 9CUULMH93V;
+				DEVELOPMENT_TEAM = A323542N3T;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -621,7 +624,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 9CUULMH93V;
+				DEVELOPMENT_TEAM = A323542N3T;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -651,7 +654,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
-				DEVELOPMENT_TEAM = 9CUULMH93V;
+				DEVELOPMENT_TEAM = A323542N3T;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

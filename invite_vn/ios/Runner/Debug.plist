@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>invite_vn</string>
+	<string>teviinapp</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -23,20 +23,18 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.493755527063-ekha606barteckgasmln4dl443lm5602</string>
+				<string>fb407220516693627</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<string>$(FLUTTER_BUILD_VERSION)</string>
 	<key>FacebookAppID</key>
-	<string>448671445670194</string>
+	<string>407220516693627</string>
 	<key>FacebookDisplayName</key>
-	<string>VietnamInvite</string>
+	<string>Teviin App - Test1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
