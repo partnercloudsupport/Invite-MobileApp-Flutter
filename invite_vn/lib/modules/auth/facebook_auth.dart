@@ -4,6 +4,10 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 class FacebookAuth {
   final _facebookLogin = FacebookLogin();
 
+  Future<bool> isLoggedIn() {
+    return _facebookLogin.isLoggedIn;
+  }
+
   void login({
     ValueChanged<String> loggedIn,
     ValueGetter<void> cancelledByUser,
