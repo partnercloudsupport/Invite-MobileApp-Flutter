@@ -4,7 +4,7 @@ import 'package:invite_vn/statics/assets.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/widgets/bar/TopBar.dart';
 import 'package:invite_vn/widgets/dialogs/app_dialog.dart';
-import 'package:invite_vn/widgets/dialogs/login_success_dialog.dart';
+import 'package:invite_vn/widgets/dialogs/logo_dialog.dart';
 import 'package:invite_vn/widgets/radio_group.dart';
 import 'package:invite_vn/widgets/scrollable_content.dart';
 import 'package:invite_vn/widgets/textfields/GrayTextField.dart';
@@ -41,11 +41,10 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
                 ),
               ),
               TopBar(
-                routes: Routes.EDIT_PROFILE,
                 onRightTap: () {
                   AppDialog.show(
                     context: context,
-                    child: LoginSuccessDialog(
+                    child: LogoDialog(
                       onTap: () {
                         if (AppDialog.close(context)) {
                           Navigator.of(context).pushNamed(Routes.PROFILE);

@@ -7,7 +7,7 @@ import 'package:invite_vn/widgets/bar/TopBar.dart';
 import 'package:invite_vn/widgets/buttons/app_button.dart';
 import 'package:invite_vn/widgets/card/AppCard.dart';
 import 'package:invite_vn/widgets/dialogs/app_dialog.dart';
-import 'package:invite_vn/widgets/dialogs/logout_dialog.dart';
+import 'package:invite_vn/widgets/dialogs/ask_dialog.dart';
 
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({Key key}) : super(key: key);
@@ -32,9 +32,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
         children: <Widget>[
           TopGradientBackground(),
           SafeArea(
-            child: TopBar(
-              routes: Routes.PROFILE,
-            ),
+            child: TopBar(),
           ),
           buildContent(),
         ],
@@ -67,7 +65,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
             onTap: () {
               AppDialog.show(
                 context: context,
-                child: LogoutDialog(
+                child: AskDialog(
                   onPositiveTap: () {
                     AppDialog.close(context);
                   },

@@ -40,6 +40,9 @@
             </intent-filter>
         </activity>
 
+        <meta-data android:name="com.google.android.geo.API_KEY"
+          android:value="AIzaSyApSfxl7qosWQOcIv1bDCFJdYPxuUma3Kk"/>
+
         <meta-data android:name="com.facebook.sdk.ApplicationId"
           android:value="@string/facebook_app_id"/>
 
