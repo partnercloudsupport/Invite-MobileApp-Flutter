@@ -19,9 +19,7 @@ class _StateFeedbackScreen extends State<FeedbackScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            TopBar(
-              routes: Routes.FEEDBACK,
-            )
+            TopBar()
           ],
         ),
       ),

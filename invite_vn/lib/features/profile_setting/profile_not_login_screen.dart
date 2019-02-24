@@ -45,9 +45,7 @@ class _StateProfileNotLoginScreen extends State<ProfileNotLoginScreen> {
         buildContent(),
 
         SafeArea(
-          child: TopBar(
-            routes: Routes.PROFILE_NOT_LOGIN,
-          ),
+          child: TopBar(),
         )
       ],
     );

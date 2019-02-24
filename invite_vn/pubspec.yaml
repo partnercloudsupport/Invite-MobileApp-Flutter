@@ -42,7 +42,7 @@ dependencies:
   cached_network_image: 0.5.1
 
   #Map
-  google_maps_flutter: 0.2.0
+  google_maps_flutter: 0.2.0+2
 
   firebase_messaging: 2.2.0
 #  flutter_crashlytics: 0.2.0
@@ -82,10 +82,15 @@ flutter:
     - assets/icons/ic_add.png
     - assets/icons/img_congratulate.png
     - assets/icons/ic_close.png
+    - assets/icons/restaurant.png
+    - assets/icons/right_arrow.png
+    - assets/icons/send.png
 
     # LOGOS
     - assets/logos/logo.png
     - assets/logos/success_logo.png
+    - assets/logos/accept_logo.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

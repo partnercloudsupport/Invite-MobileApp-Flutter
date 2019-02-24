@@ -3,7 +3,7 @@ import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/widgets/buttons/base_button.dart';
 
 class FacebookButton extends BaseButton {
-  FacebookButton({Key key, ValueGetter<void> onTap, String title})
+  FacebookButton({Key key, GestureTapCallback onTap, String title})
       : super(
           key: key,
           shape: RoundedRectangleBorder(

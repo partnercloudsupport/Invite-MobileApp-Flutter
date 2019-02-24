@@ -19,9 +19,7 @@ class _StateInviteUseAppScreen extends State<InviteUseAppScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            TopBar(
-              routes: Routes.INVITE_USE_APP,
-            ),
+            TopBar(),
           ],
         ),
       ),

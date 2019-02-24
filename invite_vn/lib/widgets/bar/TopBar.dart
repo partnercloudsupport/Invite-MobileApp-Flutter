@@ -4,13 +4,11 @@ import 'package:invite_vn/statics/assets.dart';
 import 'package:invite_vn/statics/routes.dart';
 
 class TopBar extends StatelessWidget {
-  final String routes;
   final GestureTapCallback onLeftTap;
   final GestureTapCallback onRightTap;
 
   const TopBar({
     Key key,
-    @required this.routes,
     this.onLeftTap,
     this.onRightTap,
   }) : super(key: key);
@@ -25,8 +23,9 @@ class TopBar extends StatelessWidget {
     Color headerColor = Colors.transparent;
     bool hasBack = true;
 
-    switch (routes) {
+    switch (ModalRoute.of(context).settings.name) {
       case Routes.PROFILE_NOT_LOGIN:
+      case Routes.SPLASH:
         Color color = AppColors.TORTOISE;
         left = SizedBox.fromSize(
           size: Size(40.0, 40.0),
@@ -62,6 +61,14 @@ class TopBar extends StatelessWidget {
         Color color = AppColors.TORTOISE;
         left = buildIcon(Assets.back, color);
         middle = buildText(title: "Gửi phản hồi");
+        break;
+
+      case Routes.CHAT:
+        hasShadow = true;
+        headerColor = AppColors.WHITE;
+        Color color = AppColors.TORTOISE;
+        left = buildIcon(Assets.back, color);
+        middle = buildText(title: "Chat screen");
         break;
     }
 
