@@ -80,6 +80,8 @@ flutter:
     - assets/icons/female.png
     - assets/icons/back.png
     - assets/icons/ic_add.png
+    - assets/icons/img_congratulate.png
+    - assets/icons/ic_close.png
 
     # LOGOS
     - assets/logos/logo.png
