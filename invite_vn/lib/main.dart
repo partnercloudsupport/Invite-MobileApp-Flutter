@@ -14,6 +14,7 @@ import 'package:invite_vn/features/profile_setting/profile_not_login_screen.dart
 import 'package:invite_vn/features/profile_setting/profile_screen.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
+import 'package:invite_vn/widgets/dialogs/request_accepted_dialog.dart';
 
 void main() {
   injectModules();
@@ -26,6 +27,7 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+//    return RequestAcceptedDialog();
     return MaterialApp(
       localizationsDelegates: [
         const StringLocalizationsDelegate(),
@@ -52,7 +54,7 @@ class App extends StatelessWidget {
         Routes.INVITATION_DETAIL: (context) => InvitationDetailScreen(),
         Routes.CHAT: (context) => ChatScreen(),
       },
-      initialRoute: Routes.SPLASH,
+      initialRoute: Routes.HOME,
     );
   }
 }

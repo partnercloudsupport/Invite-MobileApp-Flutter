@@ -25,6 +25,10 @@ class Assets {
 
   static String get pencil => "${_icons}pencil.png";
 
+  static String get congratulate => "${_icons}img_congratulate.png";
+  
+  static String get close => "${_icons}ic_close.png";
+
   static String get restaurant => "${_icons}restaurant.png";
 
   static String get rightArrow => "${_icons}right_arrow.png";

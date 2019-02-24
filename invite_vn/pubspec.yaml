@@ -69,23 +69,27 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-  # BACKGROUNDS
-  - assets/backgrounds/profile_not_login_bg.png
+    # BACKGROUNDS
+    - assets/backgrounds/profile_not_login_bg.png
+    - assets/backgrounds/header_home.png
 
-  # ICONS
-  - assets/icons/pencil.png
-  - assets/icons/radio_checked.png
-  - assets/icons/radio_uncheck.png
-  - assets/icons/female.png
-  - assets/icons/back.png
-  - assets/icons/restaurant.png
-  - assets/icons/right_arrow.png
-  - assets/icons/send.png
+    # ICONS
+    - assets/icons/pencil.png
+    - assets/icons/radio_checked.png
+    - assets/icons/radio_uncheck.png
+    - assets/icons/female.png
+    - assets/icons/back.png
+    - assets/icons/ic_add.png
+    - assets/icons/img_congratulate.png
+    - assets/icons/ic_close.png
+    - assets/icons/restaurant.png
+    - assets/icons/right_arrow.png
+    - assets/icons/send.png
 
-  # LOGOS
-  - assets/logos/logo.png
-  - assets/logos/success_logo.png
-  - assets/logos/accept_logo.png
+    # LOGOS
+    - assets/logos/logo.png
+    - assets/logos/success_logo.png
+    - assets/logos/accept_logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

@@ -29,22 +29,73 @@ class _StateHomeScreen extends State<HomeScreen>
     );
   }
 
+  Widget avatar(){
+    return Container(
+      child: CircleAvatar(
+        backgroundImage: new NetworkImage(
+            'https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&h=350'),
+        radius: 20.0,
+      ),
+      decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.white,
+            width: 2.0,
+          ),
+          borderRadius: BorderRadius.circular(25.0)),
+    );
+  }
+
+  Widget textActivity(){
+    return Container(
+      child: Text(
+        "Hoạt động",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 25.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      margin: EdgeInsets.all(16.0),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    ;
     return Scaffold(
       body: Column(
         children: <Widget>[
-          TabBar(
-            controller: _tabController,
-            indicatorColor: Colors.deepOrange,
-            labelColor: Colors.deepOrange,
-            unselectedLabelColor: Colors.deepOrange.withOpacity(0.3),
-            tabs: [
-              Tab(icon: Icon(Icons.directions_car)),
-              Tab(icon: Icon(Icons.directions_transit)),
-              Tab(icon: Icon(Icons.directions_bike)),
-            ],
+          Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(
+                      left: 16.0, top: 25.0, right: 16.0, bottom: 5.0),
+                  child: Row(
+                    children: <Widget>[
+                      avatar(),
+                      textActivity(),
+                    ],
+                  ),
+                ),
+                TabBar(
+                  controller: _tabController,
+                  indicatorColor: Colors.white,
+                  labelColor: Colors.white,
+                  unselectedLabelColor: Colors.white.withOpacity(0.3),
+                  tabs: [
+                    Tab(icon: Icon(Icons.directions_car), text: 'Cộng đồng',),
+                    Tab(icon: Icon(Icons.directions_transit), text: 'Đang chờ'),
+                    Tab(icon: Icon(Icons.directions_bike), text: 'Của tôi'),
+                  ],
+                ),
+              ],
+            ),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: ExactAssetImage('assets/backgrounds/header_home.png'),
+                fit: BoxFit.fill
+              ),
+            ),
           ),
           Flexible(
             child: TabBarView(
