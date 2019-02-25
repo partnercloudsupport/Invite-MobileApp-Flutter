@@ -15,10 +15,15 @@ class S {
   static Map<String, Map<String, String>> _localizedValues = {
     'en': {
       'title': 'Hello World',
+      'request_accepted': 'Yêu cầu của bạn đã được chấp nhận. Trò chuyện để giao lưu với những thành viên còn lại nhé',
+      'congratulate': 'Congratulate',
+      'chat': 'Chat'
     },
     'vi': {
       'title': 'Xin chào thế giới',
       'request_accepted': 'Yêu cầu của bạn đã được chấp nhận. Trò chuyện để giao lưu với những thành viên còn lại nhé',
+      'congratulate': 'Chúc mừng',
+      'chat': 'Trò chuyện'
     },
   };
 
@@ -28,6 +33,14 @@ class S {
 
   String get request_accepted {
     return _localizedValues[locale.languageCode]['request_accepted'];
+  }
+
+  String get congratulate{
+    return _localizedValues[locale.languageCode]['congratulate'];
+  }
+
+  String get chat{
+    return _localizedValues[locale.languageCode]['chat'];
   }
 }
 

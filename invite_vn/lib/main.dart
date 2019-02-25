@@ -27,7 +27,6 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-//    return RequestAcceptedDialog();
     return MaterialApp(
       localizationsDelegates: [
         const StringLocalizationsDelegate(),
@@ -54,7 +53,7 @@ class App extends StatelessWidget {
         Routes.INVITATION_DETAIL: (context) => InvitationDetailScreen(),
         Routes.CHAT: (context) => ChatScreen(),
       },
-      initialRoute: Routes.HOME,
+      initialRoute: Routes.SPLASH,
     );
   }
 }
