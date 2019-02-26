@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,13 +18,39 @@ import 'package:invite_vn/features/profile_setting/profile_screen.dart';
 import 'package:invite_vn/features/splash/splash_screen.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
+import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 
-void main() {
+
+Future main() async {
   injectModules();
+
+  bool isInDebugMode = false;
+
+  FlutterError.onError = (FlutterErrorDetails details) {
+    if (isInDebugMode) {
+      // In development mode simply print to console.
+      FlutterError.dumpErrorToConsole(details);
+    } else {
+      // In production mode report to the application zone to report to
+      // Crashlytics.
+      Zone.current.handleUncaughtError(details.exception, details.stack);
+    }
+  };
+
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
     statusBarColor: Colors.transparent, //or set color with: Color(0xFF0000FF)
   ));
-  runApp(App());
+
+  await FlutterCrashlytics().initialize();
+
+  runZoned<Future<Null>>(() async {
+    runApp(App());
+  }, onError: (error, stackTrace) async {
+    // Whenever an error occurs, call the `reportCrash` function. This will send
+    // Dart errors to our dev console or Crashlytics depending on the environment.
+    await FlutterCrashlytics().reportCrash(error, stackTrace, forceCrash: false);
+  });
+
 }
 
 class App extends StatelessWidget {
