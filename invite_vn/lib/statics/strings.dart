@@ -18,11 +18,16 @@ class S {
     },
     'vi': {
       'title': 'Xin chào thế giới',
+      'request_accepted': 'Yêu cầu của bạn đã được chấp nhận. Trò chuyện để giao lưu với những thành viên còn lại nhé',
     },
   };
 
   String get title {
     return _localizedValues[locale.languageCode]['title'];
+  }
+
+  String get request_accepted {
+    return _localizedValues[locale.languageCode]['request_accepted'];
   }
 }
 

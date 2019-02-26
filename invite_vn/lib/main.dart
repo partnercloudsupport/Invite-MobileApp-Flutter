@@ -20,7 +20,6 @@ import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
 import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 
-
 Future main() async {
   injectModules();
 
@@ -56,6 +55,7 @@ Future main() async {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+//    return RequestAcceptedDialog();
     return MaterialApp(
       localizationsDelegates: [
         const StringLocalizationsDelegate(),
@@ -82,7 +82,7 @@ class App extends StatelessWidget {
         Routes.INVITATION_DETAIL: (context) => InvitationDetailScreen(),
         Routes.CHAT: (context) => ChatScreen(),
       },
-      initialRoute: Routes.SPLASH,
+      initialRoute: Routes.HOME,
     );
   }
 }
