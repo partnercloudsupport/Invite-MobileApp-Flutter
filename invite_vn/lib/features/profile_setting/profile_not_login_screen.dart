@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:invite_vn/modules/auth/facebook_auth.dart';
+import 'package:invite_vn/modules/firebase/firebase_mess.dart';
 import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/statics/assets.dart';
 import 'package:invite_vn/statics/routes.dart';
@@ -6,13 +8,39 @@ import 'package:invite_vn/widgets/bar/TopBar.dart';
 import 'package:invite_vn/widgets/buttons/app_button.dart';
 
 class ProfileNotLoginScreen extends StatefulWidget {
-  ProfileNotLoginScreen({Key key}) : super(key: key);
+  final FacebookAuth facebookAuth;
+  final FirebaseMess firebaseMess;
+
+  ProfileNotLoginScreen({Key key,@required this.facebookAuth,@required this.firebaseMess}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _StateProfileNotLoginScreen();
 }
 
 class _StateProfileNotLoginScreen extends State<ProfileNotLoginScreen> {
+
+  FacebookAuth _facebookAuth;
+  FirebaseMess _firebaseMess;
+
+  @override
+  void initState() {
+    super.initState();
+    _facebookAuth = widget.facebookAuth;
+    _facebookAuth.isLoggedIn().then((isLoggedIn) {
+      if (isLoggedIn) {
+        navigateToNextScreen();
+      }
+    });
+
+    _firebaseMess = widget.firebaseMess;
+    _firebaseMess.config();
+
+  }
+
+  void navigateToNextScreen() {
+    Navigator.pushReplacementNamed(context, Routes.EDIT_PROFILE);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +105,15 @@ class _StateProfileNotLoginScreen extends State<ProfileNotLoginScreen> {
             AppButton(
               type: AppButton.Facebook,
               onTap: () {
-                Navigator.pushNamed(context, Routes.EDIT_PROFILE);
+                _facebookAuth.login(loggedIn: (value) {
+                  print(value);
+                  navigateToNextScreen();
+                }, cancelledByUser: () {
+
+                }, error: (error) {
+                  print(error);
+                });
+//                Navigator.pushNamed(context, Routes.EDIT_PROFILE);
               },
             ),
           ],

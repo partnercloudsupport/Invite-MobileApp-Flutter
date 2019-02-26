@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Teviin</string>
+
+  <string name="facebook_app_id">407220516693627</string>
+  <string name="fb_login_protocol_scheme">fb407220516693627</string>
+</resources>

@@ -18,7 +18,7 @@ class _StateSplashScreen extends State<SplashScreen> {
           children: <Widget>[
             Text("SplashScreen"),
             RaisedButton(
-              onPressed: () => Navigator.of(context).pushNamed(Routes.LOGIN),
+              onPressed: () => Navigator.of(context).pushNamed(Routes.PROFILE_NOT_LOGIN),
               child: Text("Next Screen"),
             )
           ],
