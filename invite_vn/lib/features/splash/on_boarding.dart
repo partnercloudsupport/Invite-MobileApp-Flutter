@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/statics/assets.dart';
 
-class OnBoarding1 extends StatelessWidget {
+class OnBoarding extends Container {
+  OnBoardingModel model = new OnBoardingModel();
+  final GestureTapCallback onTap;
+
+  OnBoarding({this.model, this.onTap});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +27,7 @@ class OnBoarding1 extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 53.0),
             child: Text(
-              'OnBoarding 1',
+              model.title,
               style: TextStyle(
                   color: AppColors.TORTOISE,
                   fontSize: 25.0,
@@ -32,7 +37,7 @@ class OnBoarding1 extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 13.0),
             child: Text(
-              'Xin chào Teviin',
+              model.content,
               style: TextStyle(
                   color: AppColors.SECONDARY,
                   fontSize: 20.0,
@@ -46,17 +51,21 @@ class OnBoarding1 extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: Container(
-                        padding: EdgeInsets.all(15.0),
-                        decoration: BoxDecoration(color: AppColors.TORTOISE,
-                            borderRadius: BorderRadius.circular(8.0)),
-                        child: Center(
-                          child: Text(
-                            'Tiếp tục',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.w600
+                      child: GestureDetector(
+                        onTap: onTap,
+                        child: Container(
+                          margin: EdgeInsets.only(left: 47.0, right: 47.0),
+                          padding: EdgeInsets.all(15.0),
+                          decoration: BoxDecoration(color: AppColors.TORTOISE,
+                              borderRadius: BorderRadius.circular(8.0)),
+                          child: Center(
+                            child: Text(
+                              model.button,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15.0,
+                                  fontWeight: FontWeight.w600
+                              ),
                             ),
                           ),
                         ),
@@ -71,4 +80,13 @@ class OnBoarding1 extends StatelessWidget {
       ),
     );
   }
+}
+
+class OnBoardingModel{
+  final String image;
+  final String title;
+  final String content;
+  final String button;
+
+  OnBoardingModel({this.image, this.title, this.content, this.button});
 }
