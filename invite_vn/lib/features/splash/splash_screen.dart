@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:invite_vn/features/splash/on_boarding_1.dart';
 import 'package:invite_vn/statics/routes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -11,19 +12,21 @@ class SplashScreen extends StatefulWidget {
 class _StateSplashScreen extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text("SplashScreen"),
-            RaisedButton(
-              onPressed: () => Navigator.of(context).pushNamed(Routes.LOGIN),
-              child: Text("Next Screen"),
-            )
-          ],
-        ),
-      ),
-    );
+    return OnBoarding1();
+
+//      Scaffold(
+//      body: Center(
+//        child: Column(
+//          mainAxisSize: MainAxisSize.min,
+//          children: <Widget>[
+//            Text("SplashScreen"),
+//            RaisedButton(
+//              onPressed: () => Navigator.of(context).pushNamed(Routes.LOGIN),
+//              child: Text("Next Screen"),
+//            )
+//          ],
+//        ),
+//      ),
+//    );
   }
 }

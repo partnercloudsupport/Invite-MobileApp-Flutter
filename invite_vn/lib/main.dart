@@ -12,6 +12,7 @@ import 'package:invite_vn/features/profile_setting/feedback_screen.dart';
 import 'package:invite_vn/features/profile_setting/invite_use_app_screen.dart';
 import 'package:invite_vn/features/profile_setting/profile_not_login_screen.dart';
 import 'package:invite_vn/features/profile_setting/profile_screen.dart';
+import 'package:invite_vn/features/splash/splash_screen.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
 import 'package:invite_vn/widgets/dialogs/request_accepted_dialog.dart';
@@ -38,8 +39,8 @@ class App extends StatelessWidget {
         const Locale('vi', ''),
       ],
       routes: {
-//        Routes.SPLASH: (context) => SplashScreen(),
-        Routes.SPLASH: (context) => InvitationDetailScreen(),
+        Routes.SPLASH: (context) => SplashScreen(),
+//        Routes.SPLASH: (context) => InvitationDetailScreen(),
         Routes.LOGIN: (context) => LoginScreen(),
         Routes.HOME: (context) => HomeScreen(),
         Routes.JOIN_INVITATION: (context) => JoinInvitationScreen(),
