@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:invite_vn/features/splash/on_boarding.dart';
 import 'package:invite_vn/statics/routes.dart';
+import 'package:flutter/services.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key}) : super(key: key);
@@ -14,6 +15,7 @@ class _StateSplashScreen extends State<SplashScreen> {
 
   @override
   void initState() {
+    SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
     _controller.addListener((){
 
