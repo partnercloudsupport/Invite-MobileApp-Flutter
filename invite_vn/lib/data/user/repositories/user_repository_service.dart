@@ -6,8 +6,9 @@ import 'package:invite_vn/data/user/dtos/user_request.dart';
 import 'package:invite_vn/data/user/dtos/user_response.dart';
 import 'package:invite_vn/data/user/repositories/user_api_service.dart';
 import 'package:invite_vn/data/user/repositories/user_repository.dart';
+import 'package:invite_vn/modules/network/api_service.dart';
 
-class UserRepositoryService extends UserRepository {
+class UserRepositoryService implements UserRepository {
   final UserApiService userApiService;
 
   UserRepositoryService({this.userApiService});

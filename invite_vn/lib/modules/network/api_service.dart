@@ -59,3 +59,19 @@ abstract class ApiService {
     }
   }
 }
+
+const HOST = "http://localhost:4000";
+
+Map<String, String> _headers = {};
+
+void updateHeaders({String id, String accessToken, String version}) {
+  _headers = {
+    "id": id,
+    "access_token": accessToken,
+    "version": version,
+  };
+}
+
+Map<String, String> getHeaders() {
+  return _headers;
+}

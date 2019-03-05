@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:invite_vn/di/inject_blocs.dart';
 import 'package:invite_vn/di/inject_modules.dart';
 import 'package:invite_vn/di/injector.dart';
 import 'package:invite_vn/features/chat_screen.dart';
@@ -21,6 +22,7 @@ import 'package:invite_vn/statics/strings.dart';
 import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 
 Future main() async {
+  injectBlocs();
   injectModules();
 
   bool isInDebugMode = false;

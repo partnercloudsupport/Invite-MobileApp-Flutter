@@ -1,22 +1,31 @@
 typedef FactoryFunc<D> = D Function();
 
+String _getKey(Type type, String name) {
+  return name == null ? type.toString() : type.toString() + name;
+}
+
 class Injector {
   Injector._internal();
 
-  static final _factories = Map<Type, _Factory<dynamic>>();
+  static final _factories = Map<String, _Factory<dynamic>>();
 
   static Future<void> register<D>({
     InjectorType type,
+    String name,
     FactoryFunc<D> factoryFunc,
   }) async {
-    _factories[D] = _Factory<D>(
+    String key = _getKey(D, name);
+    _factories[key] = _Factory<D>(
       type,
       factoryFunc,
     );
   }
 
-  static D get<D>() {
-    return _factories[D].getDependency();
+  static D get<D>({
+    String name,
+  }) {
+    String key = _getKey(D, name);
+    return _factories[key].getDependency();
   }
 }
 

@@ -1,5 +1,4 @@
 import 'package:http/http.dart';
-import 'package:invite_vn/data/repository.dart';
 import 'package:invite_vn/modules/network/api_service.dart';
 
 const USER = "/api/v1/user";
