@@ -8,6 +8,7 @@ const DELETE = 3;
 const METHOD = Symbol("method");
 const URL = Symbol("url");
 const HEADERS = Symbol("headers");
+const BODY = Symbol("body");
 
 String _getSymbolName(Symbol symbol) {
   final str = RegExp("(\".+\")").firstMatch(symbol.toString()).group(1);
@@ -21,9 +22,11 @@ abstract class ApiService {
     final url = invocation.namedArguments[URL];
     final Map<String, String> headers = invocation.namedArguments[HEADERS];
 
-    final body = {};
+    var body;
     invocation.namedArguments.forEach((key, value) {
-      if (!(key == METHOD || key == URL || key == HEADERS)) {
+      if (key == BODY) {
+        body = value;
+      } else if (!(key == METHOD || key == URL || key == HEADERS)) {
         body[_getSymbolName(key)] = value;
       }
     });

@@ -21,10 +21,10 @@ class _StateChatScreen extends State<ChatScreen> {
   void initState() {
     super.initState();
     users = Map();
-    users["0"] = User("0", "Vũ", "Phạm",
-        "https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/13934713_756878874454752_6345109997930477391_n.jpg?_nc_cat=108&_nc_oc=AQlWDjbY_40BpgmbZMD1RTuzPvkm1YIc4SFnY279VGpvHmZ_pZgYZpH9BQus7sHg97o&_nc_ht=scontent-hkg3-1.xx&oh=42f0a1b7b98fa99979438cc084924c42&oe=5CDD07C6");
-    users["1"] = User("1", "Long", "Vũ",
-        "https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/13934713_756878874454752_6345109997930477391_n.jpg?_nc_cat=108&_nc_oc=AQlWDjbY_40BpgmbZMD1RTuzPvkm1YIc4SFnY279VGpvHmZ_pZgYZpH9BQus7sHg97o&_nc_ht=scontent-hkg3-1.xx&oh=42f0a1b7b98fa99979438cc084924c42&oe=5CDD07C6");
+//    users["0"] = User("0", "Vũ", "Phạm",
+//        "https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/13934713_756878874454752_6345109997930477391_n.jpg?_nc_cat=108&_nc_oc=AQlWDjbY_40BpgmbZMD1RTuzPvkm1YIc4SFnY279VGpvHmZ_pZgYZpH9BQus7sHg97o&_nc_ht=scontent-hkg3-1.xx&oh=42f0a1b7b98fa99979438cc084924c42&oe=5CDD07C6");
+//    users["1"] = User("1", "Long", "Vũ",
+//        "https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/13934713_756878874454752_6345109997930477391_n.jpg?_nc_cat=108&_nc_oc=AQlWDjbY_40BpgmbZMD1RTuzPvkm1YIc4SFnY279VGpvHmZ_pZgYZpH9BQus7sHg97o&_nc_ht=scontent-hkg3-1.xx&oh=42f0a1b7b98fa99979438cc084924c42&oe=5CDD07C6");
     messages = List();
     messages.add(Message(
         false,
