@@ -20,14 +20,16 @@ class FacebookUser {
         picture: json['picture']['data']['url'],
         firstName: json['first_name'],
         lastName: json['last_name'],
-        birthday: json['birthday'],
+        birthday: _formatBirthday(json['birthday']),
         gender: json['gender'],
       );
 
-  getImageUrl(String url) {
-    RegExp exp = new RegExp(r"height=[\d]+&width=[\d]+");
-    Match match = exp.firstMatch(url);
-    url.replaceRange(match.start, match.end, "height=120&width=120");
+  static String _formatBirthday(String birthday) {
+    final pattern = "/";
+    final values = birthday.split(pattern);
+    String temp = values[0];
+    values[0] = values[1];
+    values[1] = temp;
+    return values.join(pattern);
   }
-
 }

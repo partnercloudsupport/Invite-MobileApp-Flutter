@@ -3,39 +3,52 @@ import 'package:invite_vn/statics/assets.dart';
 
 class RadioGroup extends StatefulWidget {
   final bool row;
-  final List<String> titles;
-  final ValueChanged<String> currentTitle;
+  final Map<int, String> values;
+  final ValueChanged<int> currentValue;
+  final int initValue;
 
-  RadioGroup({Key key, this.row = false, this.titles, this.currentTitle})
-      : super(key: key);
+  RadioGroup({
+    Key key,
+    this.row = false,
+    this.values,
+    this.initValue,
+    this.currentValue,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _StateRadioGroup();
 }
 
 class _StateRadioGroup extends State<RadioGroup> {
-  String currentSelected;
-  String lastItem;
+  int currentSelected;
+  int lastItem;
 
   @override
   void initState() {
     super.initState();
-    lastItem = widget.titles.last;
+    lastItem = widget.values.keys.last;
+  }
+
+
+  @override
+  void didUpdateWidget(RadioGroup oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    currentSelected = widget.initValue;
   }
 
   @override
   Widget build(BuildContext context) {
     return buildDirection(
-      children: widget.titles
+      children: widget.values.keys
           .map(
-            (title) => RadioItem(
-                  title: title,
-                  isSelected: currentSelected == title,
-                  isLastItem: lastItem == title,
+            (key) => RadioItem(
+                  title: widget.values[key],
+                  isSelected: currentSelected == key,
+                  isLastItem: lastItem == key,
                   onTap: () {
                     setState(() {
-                      currentSelected = title;
-                      widget.currentTitle(title);
+                      currentSelected = key;
+                      widget.currentValue(key);
                     });
                   },
                 ),
@@ -56,30 +69,38 @@ class RadioItem extends StatelessWidget {
   final bool isLastItem;
   final GestureTapCallback onTap;
 
-  const RadioItem({Key key, this.title, this.isSelected, this.onTap, this.isLastItem})
+  const RadioItem(
+      {Key key, this.title, this.isSelected, this.onTap, this.isLastItem})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: <Widget>[InkWell(
-      onTap: onTap,
-      splashColor: Colors.transparent,
-      child: Row(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: 8.0),
-            child: SizedBox(
-              width: size,
-              height: size,
-              child: Image.asset(
-                isSelected ? Assets.radioChecked : Assets.radioUncheck,
-                fit: BoxFit.contain,
+    return Row(
+      children: <Widget>[
+        InkWell(
+          onTap: onTap,
+          splashColor: Colors.transparent,
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(right: 8.0),
+                child: SizedBox(
+                  width: size,
+                  height: size,
+                  child: Image.asset(
+                    isSelected ? Assets.radioChecked : Assets.radioUncheck,
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
-            ),
+              Text(title)
+            ],
           ),
-          Text(title)
-        ],
-      ),
-    ), VerticalDivider(width: isLastItem? 0.0 : 32.0,)],);
+        ),
+        VerticalDivider(
+          width: isLastItem ? 0.0 : 32.0,
+        )
+      ],
+    );
   }
 }

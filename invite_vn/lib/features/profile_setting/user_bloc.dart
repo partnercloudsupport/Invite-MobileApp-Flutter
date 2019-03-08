@@ -61,6 +61,13 @@ class UserBloc implements Bloc {
     _userSubject.add(user);
   }
 
+  void setTempDatetime({String datetime}) {
+    User user = _userSubject.value;
+    user.birthday = datetime;
+
+    _userSubject.add(user);
+  }
+
   //// Cancel request
   Future<dynamic> cancelRequest() {
     return _cancelableOperation.cancel();

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:invite_vn/data/user/models/user.dart';
 import 'package:invite_vn/features/profile_setting/user_bloc.dart';
 import 'package:invite_vn/modules/facebook/facebook_service.dart';
@@ -32,6 +33,7 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
     with ScrollableContentHelper {
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController birthdayController = TextEditingController();
   bool _isFirstTime;
   FacebookService _facebookService;
   UserBloc _userBloc;
@@ -66,13 +68,26 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
     );
   }
 
-  void _clickDatePicker() {
+  void _clickDatePicker({String birthday}) {
+    final values = birthday.split("/");
+    DateTime initialDate;
+    if (values.length == 3) {
+      initialDate = DateTime(
+          int.parse(values[2]), int.parse(values[1]), int.parse(values[0]));
+    } else {
+      initialDate = DateTime(2000);
+    }
+
     showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(1970),
+      initialDate: initialDate,
+      firstDate: DateTime.utc(1970),
       lastDate: DateTime.now(),
-    );
+    ).then((datetime) {
+      _userBloc.setTempDatetime(
+        datetime: DateFormat.yMd().format(datetime),
+      );
+    });
   }
 
   //////// Build
@@ -129,13 +144,17 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
                   title: "Ngày sinh",
                   hintText: "Chọn ngày sinh",
                   text: user.birthday ?? "",
+                  controller: birthdayController,
                   isBirthday: true,
-                  onTap: _clickDatePicker),
-              buildRadioForm(title: "Giới tính"),
+                  onTap: () => _clickDatePicker(birthday: user.birthday ?? "")),
+              buildRadioForm(title: "Giới tính", initValue: user.gender),
             ],
           );
         } finally {
-          Future.delayed(Duration(milliseconds: 16,),() {
+          Future.delayed(
+              Duration(
+                milliseconds: 16,
+              ), () {
             ScrollableContent.of(context).executeCalculateCenter();
           });
         }
@@ -151,9 +170,7 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
     GestureTapCallback onTap,
     bool isBirthday = false,
   }) {
-    if (!isBirthday) {
-      controller.text = text;
-    }
+    controller.text = text;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -171,7 +188,7 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
     );
   }
 
-  Widget buildRadioForm({String title}) {
+  Widget buildRadioForm({String title, int initValue}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -181,12 +198,13 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
         ),
         RadioGroup(
           row: true,
-          titles: <String>[
-            "Nam",
-            "Nữ",
-            "Khác",
-          ],
-          currentTitle: (value) {
+          values: {
+            0: "Nam",
+            1: "Nữ",
+            2: "Khác",
+          },
+          initValue: initValue,
+          currentValue: (value) {
             print(value);
           },
         ),
@@ -201,22 +219,21 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(60.0),
-            child: imageUrl.isEmpty ?
-            SizedBox.expand(child: Image.asset(Assets.logo),)
-            :
-            CachedNetworkImage(
-              fadeInDuration: Duration(),
-              fadeOutDuration: Duration(),
-              width: 120.0,
-              height: 120.0,
-              imageUrl: imageUrl,
-              fit: BoxFit.contain,
-              errorWidget: (context, url, error) {
-                if (url.isEmpty) {
-                } else {}
-                return Image.asset(Assets.logo);
-              },
-            ),
+            child: imageUrl.isEmpty
+                ? SizedBox.expand(
+                    child: Image.asset(Assets.logo),
+                  )
+                : CachedNetworkImage(
+                    fadeInDuration: Duration(),
+                    fadeOutDuration: Duration(),
+                    width: 120.0,
+                    height: 120.0,
+                    imageUrl: imageUrl,
+                    fit: BoxFit.contain,
+                    errorWidget: (context, url, error) {
+                      return Image.asset(Assets.logo);
+                    },
+                  ),
           ),
           Align(
             alignment: Alignment.bottomRight,
