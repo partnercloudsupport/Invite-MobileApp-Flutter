@@ -18,4 +18,11 @@ class UserApiService extends ApiService {
     body,
     headers,
   });
+
+  Future<Response> update({
+    method = PUT,
+    url = "$HOST$USER",
+    body,
+    headers,
+  });
 }

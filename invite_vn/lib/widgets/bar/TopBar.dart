@@ -42,6 +42,7 @@ class TopBar extends StatelessWidget {
         break;
 
       case Routes.EDIT_PROFILE:
+      case Routes.EDIT_PROFILE_FIRST_TIME:
         Color color = AppColors.TORTOISE;
         left = buildIcon(Assets.back, color);
         right = buildText(title: "LƯU", color: color);

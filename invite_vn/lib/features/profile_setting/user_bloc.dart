@@ -47,6 +47,12 @@ class UserBloc implements Bloc {
     return isSuccess;
   }
 
+  //// Update
+  Future<bool> update() async {
+//    _cancelableOperation = CancelableOperation.fromFuture();
+    return false;
+  }
+
   //// Temp for first edit profile
   void setTempUser({FacebookUser facebookUser}) {
     User user = _userSubject.value;
@@ -57,13 +63,6 @@ class UserBloc implements Bloc {
     user.birthday = facebookUser.birthday;
     user.gender = facebookUser.gender == "male" ? 0 : 1;
     user.accessToken = facebookUser.accessToken;
-
-    _userSubject.add(user);
-  }
-
-  void setTempDatetime({String datetime}) {
-    User user = _userSubject.value;
-    user.birthday = datetime;
 
     _userSubject.add(user);
   }

@@ -55,17 +55,25 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
   }
 
   //////// Click
-  void _clickRightTopBar() {
-    AppDialog.show(
-      context: context,
-      child: LogoDialog(
-        onTap: () {
-          if (AppDialog.close(context)) {
-            Navigator.of(context).pushNamed(Routes.PROFILE);
-          }
-        },
-      ),
-    );
+  void _updateInfo() {
+    _userBloc.update()
+        .then((success) {
+        if (success) {
+          AppDialog.show(
+            context: context,
+            child: LogoDialog(
+              onTap: () {
+                if (AppDialog.close(context)) {
+                  _navigateToNextScreen();
+                }
+              },
+            ),
+          );
+        } else {
+
+        }
+    });
+
   }
 
   void _clickDatePicker({String birthday}) {
@@ -84,10 +92,16 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
       firstDate: DateTime.utc(1970),
       lastDate: DateTime.now(),
     ).then((datetime) {
-      _userBloc.setTempDatetime(
-        datetime: DateFormat.yMd().format(datetime),
-      );
+      birthdayController.text = DateFormat.yMd().format(datetime);
+//      _userBloc.setTempDatetime(
+//        datetime: DateFormat.yMd().format(datetime),
+//      );
     });
+  }
+
+  //// Navigate
+  _navigateToNextScreen() {
+    Navigator.of(context).pushNamed(Routes.PROFILE);
   }
 
   //////// Build
@@ -111,7 +125,7 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
                 ),
               ),
               TopBar(
-                onRightTap: _clickRightTopBar,
+                onRightTap: _updateInfo,
               ),
             ],
           ),
