@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:http/http.dart' as http;
 
 const GET = 0;
@@ -31,36 +33,52 @@ abstract class ApiService {
       }
     });
 
+    http.Response response;
+
     switch (method) {
       case GET:
-        return http.get(
+        response = await http.get(
           url,
           headers: headers,
         );
+        break;
 
       case POST:
-        return http.post(
+        response = await http.post(
           url,
           headers: headers,
           body: body,
         );
+        break;
 
       case PUT:
-        return http.put(url, headers: headers, body: body);
+        response = await http.put(
+          url,
+          headers: headers,
+          body: body,
+        );
+        break;
 
       case DELETE:
-        return http.delete(
+        response = await http.delete(
           url,
           headers: headers,
         );
+        break;
 
       default:
-        return null;
+        break;
     }
+
+    if (response != null) {
+      print(response.body);
+    }
+
+    return response;
   }
 }
 
-const HOST = "http://localhost:4000";
+const HOST = "http://10.0.2.2";
 
 Map<String, String> _headers = {};
 

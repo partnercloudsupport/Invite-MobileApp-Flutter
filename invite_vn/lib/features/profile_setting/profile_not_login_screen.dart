@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:invite_vn/modules/auth/facebook_auth.dart';
+import 'package:invite_vn/features/profile_setting/user_bloc.dart';
+import 'package:invite_vn/modules/facebook/facebook_service.dart';
 import 'package:invite_vn/modules/firebase/firebase_mess.dart';
 import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/statics/assets.dart';
@@ -8,10 +9,11 @@ import 'package:invite_vn/widgets/bar/TopBar.dart';
 import 'package:invite_vn/widgets/buttons/app_button.dart';
 
 class ProfileNotLoginScreen extends StatefulWidget {
-  final FacebookAuth facebookAuth;
+  final UserBloc userBloc;
+  final FacebookService facebookService;
   final FirebaseMess firebaseMess;
 
-  ProfileNotLoginScreen({Key key,@required this.facebookAuth,@required this.firebaseMess}) : super(key: key);
+  ProfileNotLoginScreen({Key key,@required this.facebookService,@required this.firebaseMess, this.userBloc}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _StateProfileNotLoginScreen();
@@ -19,28 +21,48 @@ class ProfileNotLoginScreen extends StatefulWidget {
 
 class _StateProfileNotLoginScreen extends State<ProfileNotLoginScreen> {
 
-  FacebookAuth _facebookAuth;
+  FacebookService _facebookService;
   FirebaseMess _firebaseMess;
+  UserBloc _userBloc;
 
+  //////// Init
   @override
   void initState() {
     super.initState();
-    _facebookAuth = widget.facebookAuth;
-    _facebookAuth.isLoggedIn().then((isLoggedIn) {
-      if (isLoggedIn) {
-        navigateToNextScreen();
-      }
-    });
+    _userBloc = widget.userBloc;
+    _facebookService = widget.facebookService;
 
     _firebaseMess = widget.firebaseMess;
     _firebaseMess.config();
-
   }
 
-  void navigateToNextScreen() {
-    Navigator.pushReplacementNamed(context, Routes.EDIT_PROFILE);
+  //////// Click
+  void _clickSignInWithFacebook() {
+    _facebookService.login(loggedIn: (String id, String token) {
+      print("Token: $token");
+      _userBloc.login(id: id, accessToken: token).then((success) {
+        print(success);
+        if (success) {
+          _navigateToNextScreen();
+        } else {
+
+        }
+      }).catchError((error) {
+        print(error);
+      });
+    }, cancelledByUser: () {
+
+    }, error: (error) {
+      print(error);
+    });
   }
 
+  //////// Navigate
+  void _navigateToNextScreen() {
+    Navigator.pushReplacementNamed(context, Routes.EDIT_PROFILE_FIRST_TIME, );
+  }
+
+  //////// Build
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,17 +126,7 @@ class _StateProfileNotLoginScreen extends State<ProfileNotLoginScreen> {
             ),
             AppButton(
               type: AppButton.Facebook,
-              onTap: () {
-                _facebookAuth.login(loggedIn: (value) {
-                  print(value);
-                  navigateToNextScreen();
-                }, cancelledByUser: () {
-
-                }, error: (error) {
-                  print(error);
-                });
-//                Navigator.pushNamed(context, Routes.EDIT_PROFILE);
-              },
+              onTap: _clickSignInWithFacebook,
             ),
           ],
         ),

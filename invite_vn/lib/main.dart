@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:invite_vn/di/inject_blocs.dart';
 import 'package:invite_vn/di/inject_modules.dart';
+import 'package:invite_vn/di/inject_repositories.dart';
 import 'package:invite_vn/di/injector.dart';
 import 'package:invite_vn/features/chat_screen.dart';
 import 'package:invite_vn/features/home/home_screen.dart';
@@ -19,9 +21,9 @@ import 'package:invite_vn/features/profile_setting/profile_screen.dart';
 import 'package:invite_vn/features/splash/splash_screen.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:invite_vn/statics/strings.dart';
-import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 
 Future main() async {
+  injectRepositories();
   injectBlocs();
   injectModules();
 
@@ -49,9 +51,9 @@ Future main() async {
   }, onError: (error, stackTrace) async {
     // Whenever an error occurs, call the `reportCrash` function. This will send
     // Dart errors to our dev console or Crashlytics depending on the environment.
-    await FlutterCrashlytics().reportCrash(error, stackTrace, forceCrash: false);
+    await FlutterCrashlytics()
+        .reportCrash(error, stackTrace, forceCrash: false);
   });
-
 }
 
 class App extends StatelessWidget {
@@ -78,13 +80,24 @@ class App extends StatelessWidget {
         Routes.PROFILE: (context) => ProfileScreen(),
         Routes.FEEDBACK: (context) => FeedbackScreen(),
         Routes.INVITE_USE_APP: (context) => InviteUseAppScreen(),
-        Routes.PROFILE_NOT_LOGIN: (context) => ProfileNotLoginScreen(facebookAuth: Injector.get(), firebaseMess: Injector.get(),),
-        Routes.EDIT_PROFILE: (context) => EditProfileScreen(),
+        Routes.PROFILE_NOT_LOGIN: (context) => ProfileNotLoginScreen(
+              facebookService: Injector.get(),
+              firebaseMess: Injector.get(),
+              userBloc: Injector.get(),
+            ),
+        Routes.EDIT_PROFILE_FIRST_TIME: (context) => EditProfileScreen(
+              isFirstTime: true,
+              facebookService: Injector.get(),
+              userBloc: Injector.get(),
+            ),
+        Routes.EDIT_PROFILE: (context) => EditProfileScreen(
+              isFirstTime: false,
+            ),
 
         Routes.INVITATION_DETAIL: (context) => InvitationDetailScreen(),
         Routes.CHAT: (context) => ChatScreen(),
       },
-      initialRoute: Routes.HOME,
+      initialRoute: Routes.SPLASH,
     );
   }
 }

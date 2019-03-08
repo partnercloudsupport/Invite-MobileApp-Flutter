@@ -1,3 +1,5 @@
+import 'dart:async';
+
 typedef FactoryFunc<D> = D Function();
 
 String _getKey(Type type, String name) {

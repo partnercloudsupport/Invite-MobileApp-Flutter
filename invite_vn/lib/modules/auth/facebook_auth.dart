@@ -13,7 +13,7 @@ class FacebookAuth {
     ValueGetter<void> cancelledByUser,
     ValueChanged<String> error,
   }) async {
-    final result = await _facebookLogin.logInWithReadPermissions([]);
+    final result = await _facebookLogin.logInWithReadPermissions(['default', 'user_birthday']);
 
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
@@ -31,4 +31,6 @@ class FacebookAuth {
         break;
     }
   }
+
+
 }

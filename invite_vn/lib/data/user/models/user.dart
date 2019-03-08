@@ -8,7 +8,7 @@ class User {
   String firstName;
   String lastName;
   String birthday;
-  int gender;
+  int gender; // 0: Male, 1: Female, 2: Other
   String createdAt;
   String updatedAt;
 

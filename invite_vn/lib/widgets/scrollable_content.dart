@@ -37,6 +37,7 @@ class _ScrollableContentCenter extends State<ScrollableContent> {
   final topSubject = BehaviorSubject<double>.seeded(0.0);
 
   void executeCalculateCenter() {
+    if (widget.contentKey.currentContext == null) return;
     final RenderBox body = widget.bodyKey.currentContext.findRenderObject();
     final RenderBox content =
         widget.contentKey.currentContext.findRenderObject();
@@ -59,7 +60,9 @@ class _ScrollableContentCenter extends State<ScrollableContent> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(
       (value) {
-        executeCalculateCenter();
+        if (!(widget.contentKey.currentWidget is StreamBuilder)) {
+          executeCalculateCenter();
+        }
       },
     );
 
