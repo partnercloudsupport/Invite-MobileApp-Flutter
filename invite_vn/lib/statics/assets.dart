@@ -34,4 +34,8 @@ class Assets {
   static String get rightArrow => "${_icons}right_arrow.png";
 
   static String get send => "${_icons}send.png";
+
+  static String get onBoarding01 => "${_backgrounds}onboarding_01.png";
+
+  static String get onBoarding02 => "${_backgrounds}onboarding_02.png";
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invite_vn/features/splash/on_boarding.dart';
+import 'package:invite_vn/statics/assets.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:flutter/services.dart';
 
@@ -17,23 +18,23 @@ class _StateSplashScreen extends State<SplashScreen> {
   void initState() {
     SystemChrome.setEnabledSystemUIOverlays([]);
     super.initState();
-    _controller.addListener((){
+    _controller.addListener(
+      () {
+        if (_controller.page == 0.0) {
+          setState(() {
+            _firstIndicator = Colors.black;
+            _secondIndicator = Colors.black45;
+          });
+        }
 
-      if (_controller.page == 0.0){
-        setState(() {
-          _firstIndicator = Colors.black;
-          _secondIndicator = Colors.black45;
-        });
-      }
-
-      if (_controller.page == 1.0){
-        setState(() {
-          _firstIndicator = Colors.black45;
-          _secondIndicator = Colors.black;
-        });
-      }
-
-    },);
+        if (_controller.page == 1.0) {
+          setState(() {
+            _firstIndicator = Colors.black45;
+            _secondIndicator = Colors.black;
+          });
+        }
+      },
+    );
   }
 
   @override
@@ -55,18 +56,25 @@ class _StateSplashScreen extends State<SplashScreen> {
             itemCount: 2,
             itemBuilder: (context, index) {
               List<OnBoardingModel> listData = List();
-              listData.add(OnBoardingModel(
-                title: 'OnBoarding 1',
-                content: 'Hello Teviin',
-                button: 'Tiếp tục',
-              ));
-              listData.add(OnBoardingModel(
-                title: 'OnBoarding 2',
-                content: 'Goodbye Teviin',
-                button: 'Bắt đầu',
-              ));
+              listData.add(
+                OnBoardingModel(
+                  image: Assets.onBoarding01,
+                  title: 'Bạn không biết...',
+                  content: 'Tìm chỗ để chơi? Tìm người để hẹn?',
+                  button: 'Tiếp tục',
+                ),
+              );
+              listData.add(
+                OnBoardingModel(
+                  image: Assets.onBoarding02,
+                  title: '... bật ngay Teviin',
+                  content: 'Khám phá địa điểm! Kết thêm bạn mới!',
+                  button: 'Bắt đầu',
+                ),
+              );
               return OnBoarding(
                 model: listData[index],
+                index: index,
                 onTap: () {
                   if (index == 0) {
                     _controller.animateToPage(1,
