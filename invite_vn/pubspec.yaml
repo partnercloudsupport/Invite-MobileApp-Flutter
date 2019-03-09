@@ -91,6 +91,7 @@ flutter:
     - assets/logos/logo.png
     - assets/logos/success_logo.png
     - assets/logos/accept_logo.png
+    - assets/logos/loading_logo.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

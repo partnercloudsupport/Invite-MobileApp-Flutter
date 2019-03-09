@@ -4,6 +4,7 @@ import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/statics/assets.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:flutter/services.dart';
+import 'package:invite_vn/widgets/anim/loading_logo.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key key}) : super(key: key);
@@ -115,6 +116,9 @@ class _StateSplashScreen extends State<SplashScreen> {
                 )
               ],
             ),
+          ),
+          Center(
+            child: LoadingLogo(),
           )
         ],
       ),
