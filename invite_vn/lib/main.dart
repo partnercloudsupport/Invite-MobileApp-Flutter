@@ -27,7 +27,7 @@ Future main() async {
   injectBlocs();
   injectModules();
 
-  bool isInDebugMode = false;
+  bool isInDebugMode = true;
 
   FlutterError.onError = (FlutterErrorDetails details) {
     if (isInDebugMode) {

@@ -34,6 +34,8 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController birthdayController = TextEditingController();
+
+  int _tempGender;
   bool _isFirstTime;
   FacebookService _facebookService;
   UserBloc _userBloc;
@@ -56,24 +58,32 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
 
   //////// Click
   void _updateInfo() {
-    _userBloc.update()
+    print("_updateInfo");
+    _userBloc
+        .update(
+      firstName: firstNameController.text.trim(),
+      lastName: lastNameController.text.trim(),
+      birthday: birthdayController.text.trim(),
+      gender: _tempGender,
+    )
         .then((success) {
-        if (success) {
-          AppDialog.show(
-            context: context,
-            child: LogoDialog(
-              onTap: () {
-                if (AppDialog.close(context)) {
-                  _navigateToNextScreen();
-                }
-              },
-            ),
-          );
-        } else {
-
-        }
+          print(success);
+          print(context);
+      if (success) {
+        AppDialog.show(
+          context: context,
+          child: LogoDialog(
+            onTap: () {
+              if (AppDialog.close(context)) {
+                _navigateToNextScreen();
+              }
+            },
+          ),
+        );
+      } else {}
+    }).catchError((error) {
+      print(error);
     });
-
   }
 
   void _clickDatePicker({String birthday}) {
@@ -93,9 +103,6 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
       lastDate: DateTime.now(),
     ).then((datetime) {
       birthdayController.text = DateFormat.yMd().format(datetime);
-//      _userBloc.setTempDatetime(
-//        datetime: DateFormat.yMd().format(datetime),
-//      );
     });
   }
 
@@ -115,18 +122,20 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
           key: bodyKey,
           child: Stack(
             children: <Widget>[
-              SingleChildScrollView(
+              ScrollableContent(
                 padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                child: ScrollableContent(
-                  factor: 0.35,
-                  bodyKey: bodyKey,
-                  contentKey: contentKey,
-                  child: buildContent(),
+                factor: 0.35,
+                bodyKey: bodyKey,
+                contentKey: contentKey,
+                child: Stack(
+                  children: <Widget>[
+                    buildContent(),
+                  ],
                 ),
               ),
               TopBar(
                 onRightTap: _updateInfo,
-              ),
+              )
             ],
           ),
         ),
@@ -143,7 +152,7 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
           User user = asyncSnapshot.data ?? User();
           return Column(
             children: <Widget>[
-              buildAvatar(imageUrl: user.imageUrl),
+              buildAvatar(imageUrl: user.imageUrl ?? ""),
               buildForm(
                   title: "Họ",
                   hintText: "Nhập họ",
@@ -219,6 +228,7 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
           },
           initValue: initValue,
           currentValue: (value) {
+            _tempGender = value;
             print(value);
           },
         ),
@@ -226,7 +236,7 @@ class _StateEditProfileScreen extends State<EditProfileScreen>
     );
   }
 
-  Widget buildAvatar({String imageUrl}) {
+  Widget buildAvatar({String imageUrl = ""}) {
     return SizedBox.fromSize(
       size: Size(120.0, 120.0),
       child: Stack(

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:invite_vn/data/user/dtos/update/update_user_request.dart';
+
 import 'package:invite_vn/data/user/dtos/user_request.dart';
 import 'package:invite_vn/data/user/dtos/user_response.dart';
 import 'package:invite_vn/data/user/repositories/user_api_service.dart';
@@ -16,17 +16,27 @@ class UserRepositoryService implements UserRepository {
   @override
   Future<UserResponse> login(UserRequest request) async {
     final loginRequest = request as LoginUserRequest;
-    Response response =
-    await userApiService.login(body: json.encode(loginRequest.toJson()));
-    return LoginUserResponse.fromJson(json.decode(response.body));
+    Response response = await userApiService.login(
+      body: json.encode(loginRequest.toJson()),
+    );
+
+    final loginResponse =
+        LoginUserResponse.fromJson(json.decode(response.body));
+
+    updateHeaders(
+      userId: loginResponse.user.id,
+      accessToken: loginResponse.user.accessToken,
+      version: loginResponse.user.tokenVersion.toString(),
+    );
+    return loginResponse;
   }
 
   @override
   Future<UserResponse> logout(UserRequest request) async {
     final logoutRequest = request as LogoutUserRequest;
     Response response = await userApiService.logout(
-      body: json.encode(logoutRequest.toJson()),
       headers: getHeaders(),
+      body: json.encode(logoutRequest.toJson()),
     );
     return LogoutUserResponse.fromJson(json.decode(response.body));
   }
@@ -47,9 +57,15 @@ class UserRepositoryService implements UserRepository {
   }
 
   @override
-  Future<UserResponse> update(UserRequest request) {
-    final update = request as UpdateUserRequest;
-    return null;
+  Future<UserResponse> update(UserRequest request) async {
+    final updateRequest = request as UpdateUserRequest;
+    Response response = await userApiService.update(
+      headers: getHeaders(),
+      body: json.encode(updateRequest.toJson()),
+    );
+    print(response.body);
+
+    return UpdateUserResponse.fromJson(json.decode(response.body));
   }
 }
 

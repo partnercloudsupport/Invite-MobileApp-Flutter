@@ -33,7 +33,7 @@ class ScrollableContent extends StatefulWidget {
 }
 
 class _ScrollableContentCenter extends State<ScrollableContent> {
-  double top = 0.0;
+  double lastTop = 0.0;
   final topSubject = BehaviorSubject<double>.seeded(0.0);
 
   void executeCalculateCenter() {
@@ -49,9 +49,8 @@ class _ScrollableContentCenter extends State<ScrollableContent> {
     }
     if (newTop != topSubject.value) {
       if (newTop > 0) {
+        lastTop = newTop;
         topSubject.add(newTop);
-      } else {
-        topSubject.add(0.0);
       }
     }
   }
@@ -67,15 +66,17 @@ class _ScrollableContentCenter extends State<ScrollableContent> {
     );
 
     return WillPopScope(
-      child: StreamBuilder(
-        initialData: 0.0,
-        stream: topSubject.stream,
-        builder: (context, AsyncSnapshot<double> snapshot) {
-          return Padding(
-            padding: widget.padding.add(EdgeInsets.only(top: snapshot.data)),
-            child: widget.child,
-          );
-        },
+      child: SingleChildScrollView(
+        child: StreamBuilder(
+          initialData: 0.0,
+          stream: topSubject.stream,
+          builder: (context, AsyncSnapshot<double> snapshot) {
+            return Padding(
+              padding: widget.padding.add(EdgeInsets.only(top: snapshot.data)),
+              child: widget.child,
+            );
+          },
+        ),
       ),
       onWillPop: () async {
         topSubject.close();

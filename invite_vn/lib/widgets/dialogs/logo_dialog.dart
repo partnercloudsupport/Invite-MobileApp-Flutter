@@ -15,9 +15,10 @@ class LogoDialog extends StatelessWidget {
     String message;
     String titleBtn;
     String logo;
-
+    print("Logo Build: ");
+    print(ModalRoute.of(context).settings.name);
     switch (ModalRoute.of(context).settings.name) {
-      case Routes.SPLASH:
+      case Routes.EDIT_PROFILE_FIRST_TIME:
         title = "TUYỆT VỜI";
         message = "Giờ bạn đã có thể tạo và tiếp tục tham gia các hoạt động cùng Invite";
         titleBtn = "OK";
@@ -30,8 +31,14 @@ class LogoDialog extends StatelessWidget {
         titleBtn = "TRÒ CHUYỆN";
         logo = Assets.successLogo;
         break;
-    }
 
+      default:
+        title = "TUYỆT VỜI";
+        message = "Giờ bạn đã có thể tạo và tiếp tục tham gia các hoạt động cùng Invite";
+        titleBtn = "OK";
+        logo = Assets.acceptLogo;
+        break;
+    }
 
 
     return Column(

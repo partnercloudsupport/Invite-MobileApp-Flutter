@@ -20,6 +20,7 @@ String _getSymbolName(Symbol symbol) {
 abstract class ApiService {
   @override
   Future<http.Response> noSuchMethod(Invocation invocation) async {
+    print("OK");
     final method = invocation.namedArguments[METHOD];
     final url = invocation.namedArguments[URL];
     final Map<String, String> headers = invocation.namedArguments[HEADERS];
@@ -82,9 +83,9 @@ const HOST = "http://10.0.2.2";
 
 Map<String, String> _headers = {};
 
-void updateHeaders({String id, String accessToken, String version}) {
+void updateHeaders({String userId, String accessToken, String version}) {
   _headers = {
-    "id": id,
+    "id": userId,
     "access_token": accessToken,
     "version": version,
   };
