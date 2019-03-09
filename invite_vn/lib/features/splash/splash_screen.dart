@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:invite_vn/features/splash/on_boarding.dart';
+import 'package:invite_vn/statics/app_colors.dart';
 import 'package:invite_vn/statics/assets.dart';
 import 'package:invite_vn/statics/routes.dart';
 import 'package:flutter/services.dart';
@@ -22,15 +23,15 @@ class _StateSplashScreen extends State<SplashScreen> {
       () {
         if (_controller.page == 0.0) {
           setState(() {
-            _firstIndicator = Colors.black;
-            _secondIndicator = Colors.black45;
+            _firstIndicator = AppColors.TORTOISE;
+            _secondIndicator = Colors.transparent;
           });
         }
 
         if (_controller.page == 1.0) {
           setState(() {
-            _firstIndicator = Colors.black45;
-            _secondIndicator = Colors.black;
+            _firstIndicator = Colors.transparent;
+            _secondIndicator = AppColors.TORTOISE;
           });
         }
       },
@@ -43,8 +44,8 @@ class _StateSplashScreen extends State<SplashScreen> {
     super.dispose();
   }
 
-  Color _firstIndicator = Colors.black;
-  Color _secondIndicator = Colors.black45;
+  Color _firstIndicator = AppColors.TORTOISE;
+  Color _secondIndicator = Colors.transparent;
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +100,7 @@ class _StateSplashScreen extends State<SplashScreen> {
                   decoration: BoxDecoration(
                     color: _firstIndicator,
                     borderRadius: BorderRadius.circular(6.0),
+                    border: Border.all(color: AppColors.TORTOISE, width: 1.0),
                   ),
                 ),
                 Container(
@@ -108,6 +110,7 @@ class _StateSplashScreen extends State<SplashScreen> {
                   decoration: BoxDecoration(
                     color: _secondIndicator,
                     borderRadius: BorderRadius.circular(6.0),
+                    border: Border.all(color: AppColors.TORTOISE, width: 1.0),
                   ),
                 )
               ],
