@@ -117,9 +117,6 @@ class _StateSplashScreen extends State<SplashScreen> {
               ],
             ),
           ),
-          Center(
-            child: LoadingLogo(),
-          )
         ],
       ),
     );

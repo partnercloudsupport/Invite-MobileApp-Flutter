@@ -40,4 +40,6 @@ class Assets {
   static String get rightArrow => "${_icons}right_arrow.png";
 
   static String get send => "${_icons}send.png";
+
+  static String get closeActivity => "${_icons}ic_close_activity.png";
 }

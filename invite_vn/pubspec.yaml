@@ -86,6 +86,7 @@ flutter:
     - assets/icons/restaurant.png
     - assets/icons/right_arrow.png
     - assets/icons/send.png
+    - assets/icons/ic_close_activity.png
 
     # LOGOS
     - assets/logos/logo.png
