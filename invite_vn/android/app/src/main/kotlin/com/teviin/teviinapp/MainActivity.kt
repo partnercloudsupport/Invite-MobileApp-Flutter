@@ -1,4 +1,4 @@
-package vn.invite.invitevn
+package com.teviin.teviinapp
 
 import android.os.Bundle
 

@@ -34,7 +34,7 @@ class ScrollableContent extends StatefulWidget {
 
 class _ScrollableContentCenter extends State<ScrollableContent> {
   double top = 0.0;
-  final topSubject = BehaviorSubject<double>(seedValue: 0.0);
+  final topSubject = BehaviorSubject<double>.seeded(0.0);
 
   void executeCalculateCenter() {
     final RenderBox body = widget.bodyKey.currentContext.findRenderObject();
